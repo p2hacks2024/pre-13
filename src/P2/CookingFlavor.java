@@ -11,7 +11,8 @@ import java.util.Random;
 	static String[] myFlavors = new String[2];
 
 	public static void drawElseCards(String[] args) {
-	    String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
+	    String[] cards = { "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
+	    		"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 	    Random r = new Random();
 	    for(int i=0 ; i<2 ; i++) {
 	      String card = cards[r.nextInt(10)];
