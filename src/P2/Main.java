@@ -12,8 +12,8 @@ public class Main{
 	public static void main(String[] args) {
 
 		Tohu.drawTohuCards(args);
-		CookingFavor.drawElseCards(args);
-
+		CookingFlavor.drawElseCards(args);
+		TradeCards.TradeCards();
 
 	}
 }
