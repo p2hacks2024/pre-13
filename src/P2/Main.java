@@ -13,6 +13,8 @@ public class Main{
 		CookingFlavor.startDrawElseCards(args);
 		CPU.startCpuDrawElseCards(args);
 		//while()
+	    new Display();
+		
 		Tohu.drawTohuCards(args);
 		CookingFlavor.drawElseCards(args);
 		System.out.println();
