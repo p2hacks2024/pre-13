@@ -12,6 +12,7 @@ public class CPU {
 		System.out.println("CPUのカード");
 		for(int i=0 ; i<5 ; i++) {
 			String card = Tohu.cards[r.nextInt(3)];
+			//System.out.println("?????");
 			System.out.println(card);
 			CpuCards[i] = card;
 
@@ -22,11 +23,11 @@ public class CPU {
 
 		}
 	}
-	
+
 	public static void startCpuDrawElseCards(String[] arg) {
 		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
 		Random r = new Random();
-		
+
 		for(int i=0 ; i<2 ; i++) {
 			String card = cards[r.nextInt(10)];
 			cpuFlavors[i] = card;
@@ -38,8 +39,8 @@ public class CPU {
 
 		}
 	}
-	
-	
+
+
 	public static void cpuDrawElseCards(String[] args) {
 		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
 		Random r = new Random();
@@ -62,9 +63,69 @@ public class CPU {
 		}
 		for(int i =0;i < 6;i++) {
 			if(cpuFlavors[i] != null) {
-				System.out.println(cpuFlavors[i]);
+				System.out.println("???");
+				//System.out.println(cpuFlavors[i]);
 			}
 		}
 	}
 
+	public static void cpuTradeCards() {
+		int sp = 0,ha = 0, di = 0, cl = 0;
+		for(int i = 0;i < 5;i++) {
+			if(CpuCards[i].equals("スペード")) {
+				sp++;
+			}else if(CpuCards[i].equals("ハート")) {
+				ha++;
+			}else if(CpuCards[i].equals("ダイヤ")) {
+				di++;
+			}else if(CpuCards[i].equals("クラブ")){
+				cl++;
+			}
+		}
+		int[] change = {0,0,0};
+		int changeNamber = 0;
+		if(sp == 1) {
+			for(int i = 0;i < 5;i++) {
+				if(CpuCards[i].equals("スペード")) {
+					System.out.println("CPUはスペードを食べた");
+					change[changeNamber] = i;
+					changeNamber++;
+				}
+			}
+		}
+		if(di == 1) {
+			for(int i = 0;i < 5;i++) {
+				if(CpuCards[i].equals("ダイヤ")) {
+					System.out.println("CPUはダイヤを食べた");
+					change[changeNamber] = i;
+					changeNamber++;
+				}
+			}
+		}
+		if(ha == 1) {
+			for(int i = 0;i < 5;i++) {
+				if(CpuCards[i].equals("ハート")) {
+					System.out.println("CPUはハートを食べた");
+					change[changeNamber] = i;
+					changeNamber++;
+				}
+			}
+		}
+		if(cl == 1) {
+			for(int i = 0;i < 5;i++) {
+				if(CpuCards[i].equals("クラブ")) {
+					System.out.println("CPUはクラブを食べた");
+					change[changeNamber] = i;
+					changeNamber++;
+				}
+			}
+		}
+		for(int i = 0;i < changeNamber;i++) {
+			CpuCards[change[i]] = Tohu.cards[r.nextInt(3)];
+		}
+
+		for(int i = 0; i < 5;i++) {
+			System.out.println(CpuCards[i]);
+		}
+	}
 }

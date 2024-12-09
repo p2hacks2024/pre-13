@@ -21,8 +21,8 @@ public class Main{
 		CPU.cpuDrawTohuCards(args);
 		CPU.cpuDrawElseCards(args);
 		System.out.println();
-    
-		TradeCards.TradeCard();
+
+		TradeCards.TradeCards();
 		DecideCards.convertNumber();
 		DecideCards.calculateTohu();
 		DecideCards.calculateFlavor();
@@ -30,5 +30,7 @@ public class Main{
     
 		SelectFlavor.SelectUsingFlavor();
 
+    CPU.cpuTradeCards();
+		//CPU.cpuSelectFlavor
 	}
 }
