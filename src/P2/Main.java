@@ -12,7 +12,6 @@ public class Main{
 	public static void main(String[] args) {
 		CookingFlavor.startDrawElseCards(args);
 		CPU.startCpuDrawElseCards(args);
-		
 		//while()
 		Tohu.drawTohuCards(args);
 		CookingFlavor.drawElseCards(args);
@@ -21,6 +20,6 @@ public class Main{
 		CPU.cpuDrawElseCards(args);
 		System.out.println();
 		TradeCards.TradeCards();
-
+        
 	}
 }
