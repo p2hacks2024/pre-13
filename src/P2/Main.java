@@ -22,7 +22,7 @@ public class Main{
 		CPU.cpuDrawElseCards(args);
 		System.out.println();
 
-		TradeCards.TradeCards();
+		TradeCards.TradeCard();
 		DecideCards.convertNumber();
 		DecideCards.calculateTohu();
 		DecideCards.calculateFlavor();

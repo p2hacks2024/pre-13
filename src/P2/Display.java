@@ -1,3 +1,4 @@
+/*
 package P2;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -69,3 +70,4 @@ public class Display extends JFrame implements ActionListener{
 
 
 }
+*/
