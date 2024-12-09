@@ -9,7 +9,7 @@ public class DecideCards extends TradeCards{
 	static int FlavorX = 1;
 
 	public static void convertNumber() {
-		//食材に素数を与える、積で役や料理を特定
+		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
 
 		for(int i=0 ; i<5 ; i++) {
 			if(myCards[i] == "スペード") {

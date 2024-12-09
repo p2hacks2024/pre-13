@@ -1,16 +1,12 @@
 
 package P2;
 
-import java.util.Random;
-
 // カード情報
 
 public class Main{
-	
-	
 
 	public static void main(String[] args) {
-		CookingFlavor.startDrawElseCards(args);
+    CookingFlavor.startDrawElseCards(args);
 		CPU.startCpuDrawElseCards(args);
     
 		//while()
@@ -21,14 +17,15 @@ public class Main{
 		CPU.cpuDrawTohuCards(args);
 		CPU.cpuDrawElseCards(args);
 		System.out.println();
-
+    
 		TradeCards.TradeCard();
 		DecideCards.convertNumber();
 		DecideCards.calculateTohu();
 		DecideCards.calculateFlavor();
 		DecideRoles.decideRoleNumber();
-    
-		SelectFlavor.SelectUsingFlavor();
+		DecideDishes.selectDishes();
+		SelectFlavor.canCreateDish();
+		//dishNumberで色々処理できるはず
 
     CPU.cpuTradeCards();
 		//CPU.cpuSelectFlavor
