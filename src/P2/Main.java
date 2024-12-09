@@ -3,8 +3,6 @@
  */
 package P2;
 
-import java.util.Random;
-
 // カード情報
 
 public class Main{
@@ -18,7 +16,9 @@ public class Main{
 		DecideCards.calculateTohu();
 		DecideCards.calculateFlavor();
 		DecideRoles.decideRoleNumber();
-		SelectFlavor.SelectUsingFlavor();
+		DecideDishes.selectDishes();
+		SelectFlavor.canCreateDish();
+		//dishNumberで色々処理できるはず
 
 	}
 }

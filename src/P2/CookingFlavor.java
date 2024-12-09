@@ -16,7 +16,7 @@ import java.util.Random;
 	    		"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 	    Random r = new Random();
 	    for(int i=0 ; i<2 ; i++) {
-	      String card = cards[r.nextInt(10)];
+	      String card = cards[r.nextInt(35)];
 	      System.out.println(card);
 	      numberOfCards++;
 	      myFlavors[i] = card;
