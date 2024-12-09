@@ -16,11 +16,20 @@ public class Main{
 		//while()
 		Tohu.drawTohuCards(args);
 		CookingFlavor.drawElseCards(args);
-		System.out.println();
+    System.out.println();
+    
 		CPU.cpuDrawTohuCards(args);
 		CPU.cpuDrawElseCards(args);
 		System.out.println();
-		TradeCards.TradeCards();
+    
+		TradeCards.TradeCard();
+		DecideCards.convertNumber();
+		DecideCards.calculateTohu();
+		DecideCards.calculateFlavor();
+		DecideRoles.decideRoleNumber();
+    
+		SelectFlavor.SelectUsingFlavor();
+
 
 	}
 }
