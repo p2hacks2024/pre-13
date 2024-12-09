@@ -8,15 +8,21 @@ import java.util.Random;
 
 public class CookingFlavor {
 
-	static String[] myFlavors = new String[6] ;
+	static String[] myFlavors = new String[100];
+	static int numberOfCards = 0;
 
 	public static void startDrawElseCards(String[] arg) {
-		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
+		String[] cards = { "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
+				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
+
 		Random r = new Random();
-		
+
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
+			String card = cards[r.nextInt(35)];
+			System.out.println(card);
+			numberOfCards++;
 			myFlavors[i] = card;
+			numberOfCards++;
 
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
@@ -24,34 +30,31 @@ public class CookingFlavor {
 			//他のカード分も作る
 
 		}
+		for(int i =0;i < numberOfCards;i++) {
+			//System.out.println(myFlavors[i]);
+		}
 	}
-	
-	
+
 	public static void drawElseCards(String[] args) {
-		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
+		String[] cards =  { "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
+				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
-		int haveFlavor = 0;
-		for(int j = 0;j < myFlavors.length;j++) {
-			if(myFlavors[j] == null) {
-				haveFlavor = j;
-				break;
-			}
-		}
-		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
-			myFlavors[i + haveFlavor] = card;
 
+		for(int i=0 ; i<2 ; i++) {
+			String card = cards[r.nextInt(35)];
+			myFlavors[i + numberOfCards] = card;
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
 			}
 			//他のカード分も作る
 
 		}
-		for(int i =0;i < 6;i++) {
-			if(myFlavors[i] != null) {
-				System.out.println(myFlavors[i]);
-			}
+
+		numberOfCards+=2;
+		for(int i =0;i < numberOfCards;i++) {
+			System.out.println(myFlavors[i]);
 		}
 	}
+
 
 }
