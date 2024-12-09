@@ -25,7 +25,7 @@ public class DecideCards extends TradeCards{
 			}
 		}
 
-		for(int i=0 ; myFlavors[i]!=null ; i++) {
+		for(int i=0 ; i < numberOfCards ; i++) {
 			if(myFlavors[i] == "醤油") {
 				myAllFlavors[i] = 11;
 			}

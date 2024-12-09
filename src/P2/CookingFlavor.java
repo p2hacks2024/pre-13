@@ -8,7 +8,8 @@ import java.util.Random;
 
 	public class CookingFlavor {
 
-	static String[] myFlavors = new String[2];
+	static String[] myFlavors = new String[100];
+	static int numberOfCards = 0;
 
 	public static void drawElseCards(String[] args) {
 	    String[] cards = { "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
@@ -17,6 +18,7 @@ import java.util.Random;
 	    for(int i=0 ; i<2 ; i++) {
 	      String card = cards[r.nextInt(10)];
 	      System.out.println(card);
+	      numberOfCards++;
 	      myFlavors[i] = card;
 	      
 	      if(card == "醤油") {

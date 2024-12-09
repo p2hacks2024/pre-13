@@ -13,7 +13,12 @@ public class Main{
 
 		Tohu.drawTohuCards(args);
 		CookingFlavor.drawElseCards(args);
-		TradeCards.TradeCards();
+		TradeCards.TradeCard();
+		DecideCards.convertNumber();
+		DecideCards.calculateTohu();
+		DecideCards.calculateFlavor();
+		DecideRoles.decideRoleNumber();
+		SelectFlavor.SelectUsingFlavor();
 
 	}
 }

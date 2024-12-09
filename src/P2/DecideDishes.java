@@ -1,5 +1,7 @@
 package P2;
 
-public class DecideDishes {
+public class DecideDishes extends SelectFlavor{
 
+	
+	
 }
