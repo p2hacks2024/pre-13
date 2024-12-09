@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package P2;
 
 import java.util.Random;
@@ -9,16 +7,29 @@ import java.util.Random;
 
 public class Main{
 	
-	public static void main(String[] args) {
+	
 
+	public static void main(String[] args) {
+		CookingFlavor.startDrawElseCards(args);
+		CPU.startCpuDrawElseCards(args);
+		
+		//while()
 		Tohu.drawTohuCards(args);
 		CookingFlavor.drawElseCards(args);
+    System.out.println();
+    
+		CPU.cpuDrawTohuCards(args);
+		CPU.cpuDrawElseCards(args);
+		System.out.println();
+    
 		TradeCards.TradeCard();
 		DecideCards.convertNumber();
 		DecideCards.calculateTohu();
 		DecideCards.calculateFlavor();
 		DecideRoles.decideRoleNumber();
+    
 		SelectFlavor.SelectUsingFlavor();
+
 
 	}
 }
