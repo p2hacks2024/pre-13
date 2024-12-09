@@ -49,6 +49,7 @@ public class Display extends JFrame implements ActionListener {
         // フレームの表示
         frame.setVisible(true);
     }
+    
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == sButton) {
