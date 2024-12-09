@@ -26,11 +26,13 @@ public class TradeCards extends Tohu{
 				System.out.println(myCards[i]);
 			}
 			for (int i = 0; i < myFlavors.length; i++) {
-				System.out.println(myFlavors[i]);
+				if(myFlavors[i] != null) {
+					System.out.println(myFlavors[i]);
+				}
 			}
+			System.out.println();
 			
 			//この時点で満腹度が上限-1なら交換できないようにする
-			
 			System.out.println("まだ交換しますか？");
 			String more = scan.next();
 			
@@ -38,8 +40,8 @@ public class TradeCards extends Tohu{
 				TradeCards();
 			}else {
 				moreCard = true;
+				System.out.println();
 			}
-			
 		}
 	}
 }
