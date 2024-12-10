@@ -30,7 +30,7 @@ public class CPU {
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
+			String card = cards[r.nextInt(34)];
 			cpuFlavors[i] = card;
 
 			if(card == "醤油") {
@@ -65,8 +65,8 @@ public class CPU {
 		}
 		for(int i =0;i < 6;i++) {
 			if(cpuFlavors[i] != null) {
-				System.out.println("???");
-				//System.out.println(cpuFlavors[i]);
+				//System.out.println("???");
+				System.out.println(cpuFlavors[i]);
 			}
 		}
 	}

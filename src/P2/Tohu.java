@@ -13,6 +13,7 @@ public class Tohu extends CookingFlavor{
 	static Random r = new Random();
 
 	public static void drawTohuCards(String[] args) {
+		System.out.println("Playerのカード");
 		for(int i=0 ; i<5 ; i++) {
 			String card = cards[r.nextInt(3)];
 			System.out.println(card);

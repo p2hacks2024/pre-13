@@ -6,7 +6,7 @@ package P2;
 import java.util.Random;
 
 
-public class CookingFlavor {
+public class CookingFlavor extends Hungry{
 
 	static String[] myFlavors = new String[100];
 	static int numberOfCards = 0;
@@ -18,11 +18,11 @@ public class CookingFlavor {
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(35)];
-			System.out.println(card);
+			String card = cards[r.nextInt(34)];
+			//System.out.println(card);
 			numberOfCards++;
 			myFlavors[i] = card;
-			numberOfCards++;
+			//numberOfCards++;
 
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
@@ -41,7 +41,7 @@ public class CookingFlavor {
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(35)];
+			String card = cards[r.nextInt(34)];
 			myFlavors[i + numberOfCards] = card;
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
