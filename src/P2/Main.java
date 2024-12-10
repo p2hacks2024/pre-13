@@ -10,6 +10,8 @@ public class Main{
 		CPU.startCpuDrawElseCards(args);
 
 		//while()
+	     new Display();
+		
 		Tohu.drawTohuCards(args);
 
 		CookingFlavor.drawElseCards(args);
