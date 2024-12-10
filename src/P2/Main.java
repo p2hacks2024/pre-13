@@ -9,7 +9,13 @@ public class Main{
 		CookingFlavor.startDrawElseCards(args); //プレイヤーが最初に引く調味料2枚
 		CPU.startCpuDrawElseCards(args); //CPUが最初に引く調味料2枚
 
+		//--------------------------------------
+		// 対戦開始
+		//System.out.println("対戦を開始します");
+		//--------------------------------------
+		
 		//while(true){
+		//new Display();
 		Tohu.drawTohuCards(args); //プレイヤーが豆腐を引く
 		CookingFlavor.drawElseCards(args); //プレイヤーが調味料を２枚引く
 		System.out.println(); 
@@ -53,10 +59,10 @@ public class Main{
 		//CpuDecideRoles.cpuDecideRoleNumber(); //役判別
 		//CpuDecideDishes.cpuSelectDishes(); //勝負する料理の決定
 
-		GameResult.attackDamage(true); //ダメージの計算
-		if(GameResult.finalResult() == 0) { //満腹かどうか判断
+		//GameResult.attackDamage(true); //ダメージの計算
+		//if(GameResult.finalResult() == 0) { //満腹かどうか判断
 			//break;
-		}
+		//}
 		
 	}
 }
