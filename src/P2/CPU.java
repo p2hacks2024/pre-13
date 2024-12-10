@@ -5,7 +5,7 @@ import java.util.Random;
 public class CPU {
 
 	static String[] CpuCards = new String[5];
-	static String[] cpuFlavors = new String[6] ;
+	static String[] cpuFlavors = new String[100] ;
 	static Random r = new Random();
 
 	public static void cpuDrawTohuCards(String[] args) {
@@ -30,7 +30,7 @@ public class CPU {
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
+			String card = cards[r.nextInt(34)];
 			cpuFlavors[i] = card;
 
 			if(card == "醤油") {
@@ -54,7 +54,7 @@ public class CPU {
 			}
 		}
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
+			String card = cards[r.nextInt(34)];
 			cpuFlavors[i + haveFlavor] = card;
 
 			if(card == "醤油") {

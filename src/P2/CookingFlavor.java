@@ -22,8 +22,6 @@ public class CookingFlavor {
 			System.out.println(card);
 			numberOfCards++;
 			myFlavors[i] = card;
-			numberOfCards++;
-
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
 			}
@@ -52,7 +50,7 @@ public class CookingFlavor {
 
 		numberOfCards+=2;
 		for(int i =0;i < numberOfCards;i++) {
-			System.out.println(myFlavors[i]);
+		//	System.out.println(myFlavors[i]);
 		}
 	}
 
