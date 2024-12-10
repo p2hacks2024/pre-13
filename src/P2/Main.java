@@ -12,8 +12,6 @@ public class Main{
 		//while()
 		Tohu.drawTohuCards(args);
 
-
-
 		CookingFlavor.drawElseCards(args);
 		System.out.println();
 		Hungry.increaseHungry();
