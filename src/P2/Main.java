@@ -9,6 +9,7 @@ public class Main{
 
 		Tohu.drawTohuCards(args);
 		CookingFlavor.startDrawElseCards(args);
+		Hungry.increaseHungry();
 		TradeCards.TradeCard();
 		DecideCards.convertNumber();
 		DecideCards.calculateTohu();
@@ -17,6 +18,8 @@ public class Main{
 		DecideDishes.selectDishes();
 		SelectFlavor.canCreateDish();
 		//dishNumberで色々処理できるはず
-
+		GameResult.attackDamage();
+		GameResult.finalResult();
+		
 	}
 }

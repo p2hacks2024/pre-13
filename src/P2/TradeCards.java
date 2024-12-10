@@ -39,6 +39,11 @@ public class TradeCards extends Tohu{
 				for (int i = 0; i < numberOfCards; i++) {
 					System.out.println(myFlavors[i]);
 				}
+				System.out.print("相手の満腹ゲージ：");
+				for(int i = 0; i < 50; i++) {
+					System.out.print(hungryGauge[i]);
+				}
+				System.out.print("\n");
 
 				//この時点で満腹度が上限-1なら交換できないようにする
 

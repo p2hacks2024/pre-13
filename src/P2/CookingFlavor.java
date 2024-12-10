@@ -6,7 +6,7 @@ package P2;
 import java.util.Random;
 
 
-public class CookingFlavor {
+public class CookingFlavor extends Hungry{
 
 	static String[] myFlavors = new String[100];
 	static int numberOfCards = 0;
@@ -28,5 +28,6 @@ public class CookingFlavor {
 			//他のカード分も作る
 
 		}
+		
 	}
 }
