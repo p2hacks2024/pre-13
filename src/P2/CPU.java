@@ -65,8 +65,8 @@ public class CPU {
 		}
 		for(int i =0;i < 6;i++) {
 			if(cpuFlavors[i] != null) {
-				System.out.println("???");
-				//System.out.println(cpuFlavors[i]);
+				//System.out.println("???");
+				System.out.println(cpuFlavors[i]);
 			}
 		}
 	}
