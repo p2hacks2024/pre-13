@@ -25,11 +25,12 @@ public class CPU {
 	}
 
 	public static void startCpuDrawElseCards(String[] arg) {
-		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
+		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
+				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(10)];
+			String card = cards[r.nextInt(34)];
 			cpuFlavors[i] = card;
 
 			if(card == "醤油") {
@@ -42,7 +43,8 @@ public class CPU {
 
 
 	public static void cpuDrawElseCards(String[] args) {
-		String[] cards = { "醤油","醤油","味噌","豆板醬","だし","ネギ","ネギ","肉","肉","キノコ" };
+		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
+				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
 		int haveFlavor = 0;
 		for(int j = 0;j < cpuFlavors.length;j++) {
@@ -63,8 +65,8 @@ public class CPU {
 		}
 		for(int i =0;i < 6;i++) {
 			if(cpuFlavors[i] != null) {
-				System.out.println("???");
-				//System.out.println(cpuFlavors[i]);
+				//System.out.println("???");
+				System.out.println(cpuFlavors[i]);
 			}
 		}
 	}
@@ -123,9 +125,12 @@ public class CPU {
 		for(int i = 0;i < changeNamber;i++) {
 			CpuCards[change[i]] = Tohu.cards[r.nextInt(3)];
 		}
+		if(changeNamber== 0) {
+			System.out.println("CPUは何も食べなかった");
+		}
 
 		for(int i = 0; i < 5;i++) {
-			System.out.println(CpuCards[i]);
+			//System.out.println(CpuCards[i]);
 		}
 	}
 }

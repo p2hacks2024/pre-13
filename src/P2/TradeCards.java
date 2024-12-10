@@ -41,7 +41,7 @@ public class TradeCards extends Tohu{
 				}
 				System.out.print("相手の満腹ゲージ：");
 				for(int i = 0; i < 50; i++) {
-					System.out.print(hungryGauge[i]);
+					System.out.print(CPUHungryGauge[i]);
 				}
 				System.out.print("\n");
 
