@@ -4,330 +4,238 @@ import java.util.Scanner;
 
 public class CpuDecideDishes extends CpuDecideRole{
 
-	static int dishNumber = 100;
-	static boolean canCreate = false;
+	
+	static boolean cpux = false;
+	static boolean cpuy = false;
+	static boolean cpuz = false;
+	static int cpualpha = 0;
 
 	public static void cpuSelectDishes() { //料理ごとに数値を設定
 
-		
+		cpux = false;
+		cpuy = false;
+		cpuz = false;
+		cpualpha = 0;
 
-			//System.out.println("どの料理を作りますか？ <料理名を入力>");
-			//System.out.println("作らない場合は <作らない>と入力");
-			//Scanner selectDish = new Scanner(System.in);
-			//String dish = selectDish.next();
+		//System.out.println("どの料理を作りますか？ <料理名を入力>");
+		//System.out.println("作らない場合は <作らない>と入力");
+		//Scanner selectDish = new Scanner(System.in);
+		//String dish = selectDish.next();
 
-			if(cpuFlavorX % 207727 == 0 || cpuFlavorX % 222053 == 0 || cpuFlavorX % 265031 == 0	||
-			cpuFlavorX % 237367 == 0 || cpuFlavorX % 283309 == 0 || cpuFlavorX % 338143 == 0) { //大盛鍋
-				
-			}else if(cpuFlavorX % 9139 == 0) { //味噌煮込み豆腐
-				
-			}else if(cpuFlavorX % 12673 == 0 || cpuFlavorX % 13547 == 0 || cpuFlavorX % 16169 == 0) { //鍋
-				
-			}else if(cpuFlavorX % 7163 == 0 || cpuFlavorX % 7657 == 0) { //味噌汁
-				
-			}else if(cpuFlavorX % 551 == 0) { //出汁ジュレ冷奴
-				
-			}else if(cpuFlavorX % 527 == 0) { //辛味豆腐サラダ
-				
-			}else if(cpuFlavorX % 407 == 0) { //豆腐の煮物
-				
-			}else if(cpuFlavorX % 391 == 0) { //麻婆豆腐
-				
-			}else if(cpuFlavorX % 319 == 0) { //ネギ乗せ冷奴
-				
-			}else if(cpuFlavorX % 29 == 0) { //焼き豆腐
-				
-			}else if(cpuFlavorX % 23 == 0) { //豆腐ハンバーグ
-				
-			}else if(cpuFlavorX % 13 == 0) { //豆腐の味噌漬け
-				
-			}else if(cpuFlavorX % 11 == 0) { //冷奴
-				
-			}else { //作らない
-				
-			}
-			
-/*
-			if(dishNumber == 0) { //冷奴
-				if(FlavorX % 11 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "醤油") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-					}
-					System.out.println("冷奴を作って勝負します");
-					nextGauge = 2;
-					canCreate = true;
-					break;
+		if(cpuFlavorX % 207727 == 0 || cpuFlavorX % 222053 == 0 || cpuFlavorX % 265031 == 0	||
+				cpuFlavorX % 237367 == 0 || cpuFlavorX % 283309 == 0 || cpuFlavorX % 338143 == 0) { //大盛鍋
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "出汁" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //出汁を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "肉" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //肉を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
+				}
+				if((cpuFlavors[i] == "ネギ" || cpuFlavors[i] == "根菜" || cpuFlavors[i] == "葉物野菜") && cpualpha < 2) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-3]; //なんでも野菜を削除
+					cpuFlavors[cpuNumberOfCards-3] = null; //後ろから三、四番目の調理カードと入れ替え
+					cpualpha++;
 				}
 			}
-			if(dishNumber == 1) { //豆腐の味噌漬け
-				if(FlavorX % 13 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "味噌") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-					}
-					System.out.println("豆腐の味噌漬けを作って勝負します");
-					nextGauge = 2;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=4;
+			nextGauge = 5;
+			System.out.println("CPUは大盛り鍋を作った");
+		}else if(cpuFlavorX % 9139 == 0) { //味噌煮込み豆腐
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "味噌" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards - 1]; //味噌を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "出汁" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //出汁を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
+				}
+				if(cpuFlavors[i] == "根菜" && cpuz == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-3]; //根菜を削除
+					cpuFlavors[cpuNumberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+					cpuz = true;
 				}
 			}
-			if(dishNumber == 2) { //豆腐ハンバーグ
-				if(FlavorX % 23 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "肉") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //肉を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-					}
-					System.out.println("豆腐ハンバーグを作って勝負します");
-					nextGauge = 2;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=3;
+			System.out.println("CPUは味噌煮込み豆腐を作った");
+			nextGauge = 4;
+		}else if(cpuFlavorX % 12673 == 0 || cpuFlavorX % 13547 == 0 || cpuFlavorX % 16169 == 0) { //鍋
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "出汁" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //出汁を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "肉" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //肉を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
+				}
+				if((cpuFlavors[i] == "ネギ" || cpuFlavors[i] == "根菜" || cpuFlavors[i] == "葉物野菜") && cpuz == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-3]; //なんでも野菜を削除
+					cpuFlavors[cpuNumberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+					cpuz = true;
 				}
 			}
-			if(dishNumber == 3) { //焼き豆腐
-				if(FlavorX % 29 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "ネギ") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //ネギを削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-					}
-					System.out.println("焼き豆腐を作って勝負します");
-					nextGauge = 2;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=3;
+			System.out.println("CPUは鍋を作った");
+			nextGauge = 4;
+		}else if(cpuFlavorX % 7163 == 0 || cpuFlavorX % 7657 == 0) { //味噌汁
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "味噌" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //味噌を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "出汁" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //出汁を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
+				}
+				if((cpuFlavors[i] == "ネギ" || cpuFlavors[i] == "葉物野菜") && cpuz == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-3]; //なんでも野菜を削除
+					cpuFlavors[cpuNumberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+					cpuz = true;
 				}
 			}
-
-			//具材2つ
-
-			if(dishNumber == 4) { //ネギ乗せ冷奴
-				if(FlavorX % 319 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "醤油") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "ネギ") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("ネギ乗せ冷奴を作って勝負します");
-					nextGauge = 3;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=3;
+			System.out.println("CPUは味噌汁を作った");
+			nextGauge = 4;
+		}else if(cpuFlavorX % 551 == 0) { //出汁ジュレ冷奴
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "出汁" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //出汁を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "ネギ" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //ネギを削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
 				}
 			}
-			if(dishNumber == 5) { //麻婆豆腐
-				if(FlavorX % 391 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "辛味調味料") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "肉") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("麻婆豆腐を作って勝負します");
-					nextGauge = 3;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=2;
+			System.out.println("CPUは出汁ジュレ冷奴を作った");
+			nextGauge = 3;
+		}else if(cpuFlavorX % 527 == 0) { //辛味豆腐サラダ
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "辛味調味料" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //辛味調味料を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "葉物野菜" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //葉物野菜を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
 				}
 			}
-			if(dishNumber == 6) { //豆腐の煮物
-				if(FlavorX % 407 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "醤油") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "根菜") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //根菜を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("豆腐の煮物を作って勝負します");
-					nextGauge = 3;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=2;
+			System.out.println("CPUは辛味豆腐サラダを作った");
+			nextGauge = 3;
+		}else if(cpuFlavorX % 407 == 0) { //豆腐の煮物
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "醤油" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //醤油を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "根菜" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //根菜を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
 				}
 			}
-			if(dishNumber == 7) { //辛味豆腐サラダ
-				if(FlavorX % 527 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "辛味調味料") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "葉物野菜") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //葉物野菜を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("辛味豆腐サラダを作って勝負します");
-					nextGauge = 3;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=2;
+			System.out.println("CPUは豆腐の煮物を作った");
+			nextGauge = 3;
+		}else if(cpuFlavorX % 391 == 0) { //麻婆豆腐
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "辛味調味料" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //辛味調味料を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "肉" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //肉を削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
 				}
 			}
-			if(dishNumber == 8) { //出汁ジュレ冷奴
-				if(FlavorX % 551 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "出汁") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "ネギ") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("出汁ジュレ冷奴を作って勝負します");
-					nextGauge = 3;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=2;
+			System.out.println("CPUは麻婆豆腐を作った");
+			nextGauge = 3;
+		}else if(cpuFlavorX % 319 == 0) { //ネギ乗せ冷奴
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "醤油" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //醤油を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
+				}
+				if(cpuFlavors[i] == "ネギ" && cpuy == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-2]; //ネギを削除
+					cpuFlavors[cpuNumberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+					cpuy = true;
 				}
 			}
-
-			//具材3つ
-
-			if(dishNumber == 9) { //味噌汁
-				if(FlavorX % 7163 != 0 || FlavorX % 7657 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "味噌") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "出汁") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-						if(myFlavors[i] == "ネギ" || myFlavors[i] == "葉物野菜" ) {
-							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("味噌汁を作って勝負します");
-					nextGauge = 4;
-					canCreate = true;
-					break;
+			cpuNumberOfCards-=2;
+			System.out.println("CPUはネギ乗せ冷奴を作った");
+			nextGauge = 3;
+		}else if(cpuFlavorX % 29 == 0) { //焼き豆腐
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "ネギ" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //ネギを削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
 				}
 			}
-			if(dishNumber == 10) { //鍋
-				if(FlavorX % 12673 != 0 || FlavorX % 13547 != 0 || FlavorX % 16169 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "出汁") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "肉") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-						if(myFlavors[i] == "ネギ" || myFlavors[i] == "根菜" || myFlavors[i] == "葉物野菜" ) {
-							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("鍋を作って勝負します");
-					nextGauge = 4;
-					canCreate = true;
-					break;
+			cpuNumberOfCards--;
+			System.out.println("CPUは焼き豆腐を作った");
+			nextGauge = 2;
+		}else if(cpuFlavorX % 23 == 0) { //豆腐ハンバーグ
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "肉" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //肉を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
 				}
 			}
-			if(dishNumber == 11) { //味噌煮込み豆腐
-				if(FlavorX % 9139 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "味噌") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "出汁") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-						if(myFlavors[i] == "根菜") {
-							myFlavors[i] = myFlavors[numberOfCards-3]; //根菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("味噌煮込み豆腐を作って勝負します");
-					nextGauge = 4;
-					canCreate = true;
-					break;
+			cpuNumberOfCards--;
+			System.out.println("CPUは豆腐ハンバーグを作った");
+			nextGauge = 2;
+		}else if(cpuFlavorX % 13 == 0) { //豆腐の味噌漬け
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "味噌" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //味噌を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
 				}
 			}
-
-			//具材4つ
-
-			if(dishNumber == 12) { //大盛り鍋
-				if(FlavorX % 207727 != 0 || FlavorX % 222053 != 0 || FlavorX % 265031 != 0
-						||FlavorX % 237367 != 0 || FlavorX % 283309 != 0 || FlavorX % 338143 != 0) {
-					System.out.println("この料理は作れません"); //やり直し
-				}else {
-					for (int i = 0; i < numberOfCards; i++) {
-						if(myFlavors[i] == "出汁") {
-							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
-							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
-						}
-						if(myFlavors[i] == "肉") {
-							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
-						}
-						if(myFlavors[i] == "ネギ" || myFlavors[i] == "根菜" || myFlavors[i] == "葉物野菜" ) {
-							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三、四番目の調理カードと入れ替え
-						}
-					}
-					System.out.println("大盛り鍋奴を作って勝負します");
-					nextGauge = 5;
-					canCreate = true;
-					break;
+			cpuNumberOfCards--;
+			System.out.println("CPUは豆腐の味噌漬けを作った");
+			nextGauge = 2;
+		}else if(cpuFlavorX % 11 == 0) { //冷奴
+			for (int i = 0; i < cpuNumberOfCards; i++) {
+				if(cpuFlavors[i] == "醤油" && cpux == false) {
+					cpuFlavors[i] = cpuFlavors[cpuNumberOfCards-1]; //醤油を削除
+					cpuFlavors[cpuNumberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+					cpux = true;
 				}
 			}
-
-			//作らない
-
-			if(dishNumber == 100) {
-				System.out.println("料理を作らず勝負します");
-				nextGauge = 1;
-				canCreate = true;
-				break;
-			}
-*/
-		
+			cpuNumberOfCards--;
+			System.out.println("CPUは冷奴を作った");
+			nextGauge = 2;
+		}else { //作らない
+			nextGauge = 1;
+			System.out.println("CPUは何も作らなかった");
+		}
+		CPU.getCpuCards();
+		System.out.println();
 	}
 }

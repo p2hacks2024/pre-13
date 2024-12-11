@@ -5,7 +5,7 @@ public class CpuDecideRole extends CpuDecideCards{
 	static String cpuroleString;
 	static int cpuroleNumber = 0;
 
-	public static void decideRoleNumber() {
+	public static void cpuDecideRoleNumber() {
 
 		if(cpuTohuX == 32|| cpuTohuX == 243 || cpuTohuX == 3125 || cpuTohuX == 16807) {
 			cpuroleString = "Frash"; //豆腐ラッシュ
@@ -40,5 +40,9 @@ public class CpuDecideRole extends CpuDecideCards{
 			cpuroleString = "OnePare"; //ワンペア
 			cpuroleNumber = 1;
 		}
+	}
+	
+	public static int getCpuRoleNumber() {
+		return cpuroleNumber;
 	}
 }

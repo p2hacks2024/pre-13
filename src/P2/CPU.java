@@ -2,11 +2,11 @@ package P2;
 
 import java.util.Random;
 
-public class CPU {
+public class CPU extends Hungry{
 
 	static String[] CpuCards = new String[5];
 	static String[] cpuFlavors = new String[100] ;
-	static int cpuNumberOfCards=0;
+	static int cpuNumberOfCards = 0;
 	static Random r = new Random();
 
 	public static void cpuDrawTohuCards(String[] args) {
@@ -73,6 +73,13 @@ public class CPU {
 		}
 	}
 
+	public static void getCpuCards() {
+		for(int i=0 ; i<5 ; i++) {
+			//System.out.println("?????");
+			System.out.println(CpuCards[i]);
+		}
+	}
+
 	public static void cpuTradeCards() {
 		int sp = 0,ha = 0, di = 0, cl = 0;
 		for(int i = 0;i < 5;i++) {
@@ -88,39 +95,49 @@ public class CPU {
 		}
 		int[] change = {0,0,0};
 		int changeNamber = 0;
-		if(sp == 1) {
-			for(int i = 0;i < 5;i++) {
-				if(CpuCards[i].equals("スペード")) {
-					System.out.println("CPUはスペードを食べた");
-					change[changeNamber] = i;
-					changeNamber++;
+		if(CPUCurrentGauge <45) {
+			if(sp == 1) {
+				for(int i = 0;i < 5;i++) {
+					if(CpuCards[i].equals("スペード")) {
+						System.out.println("CPUはスペードを食べた");
+						change[changeNamber] = i;
+						changeNamber++;
+						CPUHungryGauge[CPUCurrentGauge] = "■";
+						CPUCurrentGauge++;
+					}
 				}
 			}
-		}
-		if(di == 1) {
-			for(int i = 0;i < 5;i++) {
-				if(CpuCards[i].equals("ダイヤ")) {
-					System.out.println("CPUはダイヤを食べた");
-					change[changeNamber] = i;
-					changeNamber++;
+			if(di == 1) {
+				for(int i = 0;i < 5;i++) {
+					if(CpuCards[i].equals("ダイヤ")) {
+						System.out.println("CPUはダイヤを食べた");
+						change[changeNamber] = i;
+						changeNamber++;
+						CPUHungryGauge[CPUCurrentGauge] = "■";
+						CPUCurrentGauge++;
+					}
 				}
 			}
-		}
-		if(ha == 1) {
-			for(int i = 0;i < 5;i++) {
-				if(CpuCards[i].equals("ハート")) {
-					System.out.println("CPUはハートを食べた");
-					change[changeNamber] = i;
-					changeNamber++;
+			if(ha == 1) {
+				for(int i = 0;i < 5;i++) {
+					if(CpuCards[i].equals("ハート")) {
+						System.out.println("CPUはハートを食べた");
+						change[changeNamber] = i;
+						changeNamber++;
+						CPUHungryGauge[CPUCurrentGauge] = "■";
+						CPUCurrentGauge++;
+					}
 				}
 			}
-		}
-		if(cl == 1) {
-			for(int i = 0;i < 5;i++) {
-				if(CpuCards[i].equals("クラブ")) {
-					System.out.println("CPUはクラブを食べた");
-					change[changeNamber] = i;
-					changeNamber++;
+			if(cl == 1) {
+				for(int i = 0;i < 5;i++) {
+					if(CpuCards[i].equals("クラブ")) {
+						System.out.println("CPUはクラブを食べた");
+						change[changeNamber] = i;
+						changeNamber++;
+						CPUHungryGauge[CPUCurrentGauge] = "■";
+						CPUCurrentGauge++;
+					}
 				}
 			}
 		}
@@ -130,7 +147,18 @@ public class CPU {
 		if(changeNamber== 0) {
 			System.out.println("CPUは何も食べなかった");
 		}
+		System.out.println();
+		System.out.print("自分の満腹ゲージ：");
+		for(int i = 0; i < 50; i++) {
+			System.out.print(myHungryGauge[i]);
+		}
+		System.out.print("\n");
 
+		System.out.print("CPUの満腹ゲージ：");
+		for(int i = 0; i < 50; i++) {
+			System.out.print(CPUHungryGauge[i]);
+		}
+		System.out.print("\n");
 		for(int i = 0; i < 5;i++) {
 			//System.out.println(CpuCards[i]);
 		}

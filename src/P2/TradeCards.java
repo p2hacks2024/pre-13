@@ -33,7 +33,8 @@ public class TradeCards extends Tohu{
 				System.out.println("交換します\n");
 
 				myCards[tradeNumber-1] = cards[r.nextInt(3)];
-				
+
+				System.out.println();
 				//ここで満腹度を増やす
 				if(tradeOne == false) {
 					myHungryGauge[myCurrentGauge] = "■";
@@ -44,6 +45,7 @@ public class TradeCards extends Tohu{
 					CPUHungryGauge[CPUCurrentGauge] = "■";
 					CPUCurrentGauge++;
 				}
+				System.out.println();
 
 				for (int i = 0; i < myCards.length; i++) {
 					System.out.println(myCards[i]);
@@ -51,7 +53,7 @@ public class TradeCards extends Tohu{
 				for (int i = 0; i < numberOfCards; i++) {
 					System.out.println(myFlavors[i]);
 				}
-				
+				System.out.println();
 				System.out.print("自分の満腹ゲージ：");
 				for(int i = 0; i < 50; i++) {
 					System.out.print(myHungryGauge[i]);
@@ -63,7 +65,7 @@ public class TradeCards extends Tohu{
 					System.out.print(CPUHungryGauge[i]);
 				}
 				System.out.print("\n");
-
+				System.out.println();
 				//この時点で満腹度が上限-1なら交換できないようにする
 
 				System.out.println("カードを交換しますか？ yes/no");
@@ -76,6 +78,8 @@ public class TradeCards extends Tohu{
 
 			}
 		}
+
+		System.out.println();
 		if(tradeOne == false) {
 			tradeOne = true;
 		}

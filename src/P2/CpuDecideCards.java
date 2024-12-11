@@ -5,8 +5,8 @@ public class CpuDecideCards extends CPU{
 
 	static int[] cpuAllCards = new int[5];
 	static int[] cpuAllFlavors = new int[100];
-	static int cpuTohuX = 1;
-	static int cpuFlavorX = 1;
+	static long cpuTohuX = 1;
+	static long cpuFlavorX = 1;
 
 	public static void cpuConvertNumber() {
 		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
@@ -55,16 +55,16 @@ public class CpuDecideCards extends CPU{
 
 	}
 
-	public static int cpuCalculateTohu() {
-
+	public static long cpuCalculateTohu() {
+		cpuTohuX = 1;
 		for(int i=0 ; i<5 ; i++) {
 			cpuTohuX = cpuAllCards[i]*cpuTohuX;
 		}
 		return cpuTohuX;
 	}
 
-	public static int cpuCalculateFlavor() {
-
+	public static long cpuCalculateFlavor() {
+		cpuFlavorX = 1;
 		for(int i=0 ;cpuFlavors[i]!=null ; i++) {
 			cpuFlavorX = cpuAllFlavors[i]*cpuFlavorX;
 		}
