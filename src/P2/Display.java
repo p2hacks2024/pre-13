@@ -8,6 +8,8 @@ import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -23,12 +25,15 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 public class Display extends JFrame implements ActionListener {
+	boolean startFrag=false;
+	int currentSlideIndex = 1; // 現在のスライドインデックス
 	JButton sButton;
-	JLabel titleLabel,slideLabel1;
+	JLabel titleLabel;
+	JLabel slideLabel[]=new JLabel[9] ;
 	JPanel titlePanel, buttonPanel,slidePanel;
 	FlowLayout layout1, layout2;
 	ImageIcon title,chef,refrigerator,kinu1,kinu2,momen1,momen2;
-	ImageIcon slide1,slide2,slide3,slide4,slide5,slide6,slide7,slide8;
+	ImageIcon slide[] = new ImageIcon[9];
 	CardLayout scene;
 	Display() {
 
@@ -42,7 +47,9 @@ public class Display extends JFrame implements ActionListener {
 		//        backPanel.setBackground(Color.BLACK);
 		// タイトル画像の読み込み
 		title = new ImageIcon(getClass().getResource("/toufurash.png")); // 画像の読み込み（リソースパス）
-		slide1 = new ImageIcon(getClass().getResource("/スライド1.JPG"));
+		for(int i=1;i<9;i++) {
+			slide[i] = new ImageIcon(getClass().getResource("/スライド"+i+".JPG"));
+		}
 		// レイアウトとパネルの設定
 		layout1 = new FlowLayout(FlowLayout.CENTER, 0, 100);
 		layout2 = new FlowLayout(FlowLayout.CENTER, 0, 100);
@@ -54,8 +61,12 @@ public class Display extends JFrame implements ActionListener {
 		titleLabel = new JLabel(title);
 		titlePanel.add(titleLabel);
 		//説明スライドパネルを追加
-		slideLabel1 = new JLabel(slide1);
-		slidePanel.add(slideLabel1);
+		for(int i = 8;i>0;i--) {
+			slideLabel[i] = new JLabel(slide[i]);
+			slidePanel.add(slideLabel[i]);
+			slideLabel[i].setVisible(false);
+		}
+
 		slidePanel.setVisible(false);
 		// ボタンの設定
 		sButton = new JButton("start");
@@ -70,15 +81,32 @@ public class Display extends JFrame implements ActionListener {
 		frame.add(slidePanel,BorderLayout.CENTER);
 		// フレームの表示
 		frame.setVisible(true);
+		slidePanel.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	            if (startFrag) {
+	                slideLabel[currentSlideIndex].setVisible(false); // 現在のスライドを非表示
+	                currentSlideIndex++;
+	                if (currentSlideIndex > 8) {
+	                   
+	                }
+	                slideLabel[currentSlideIndex].setVisible(true); // 次のスライドを表示
+	            }
+	        }
+	    });
 	}
 
-
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == sButton) {
 			titlePanel.setVisible(false);
 			sButton.setVisible(false);
 			slidePanel.setVisible(true);
+			startFrag = true;
+			slideLabel[1].setVisible(true);
 		}
-
 	}
+
+
+	
 }
