@@ -55,6 +55,12 @@ public class CookingFlavor extends Hungry{
 			System.out.println(myFlavors[i]);
 		}
 	}
+	
+	/*public static void getCookingFlavors() {
+		for(int i =0;i < numberOfCards;i++) {
+			System.out.println(myFlavors[i]);
+		}
+	}*/
 
 
 }
