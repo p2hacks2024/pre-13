@@ -41,7 +41,7 @@ public class Main{
 		//SelectFlavor.canCreateDish();
 		//dishNumberで色々処理できるはず
 
-		GameResult.attackDamage(false); //ダメージの計算
+		GameResult.attackDamage(true); //ダメージの計算
 		if(GameResult.finalResult() == 0) { //満腹かどうか判断
 			//break;
 		}
