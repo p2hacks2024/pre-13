@@ -34,6 +34,8 @@ public class Main{
 
 		GameResult.attackDamage();
 		GameResult.finalResult();
+		
+		//CookingFlavor.getCookingFlavors();
 
 		//CPU.cpuTradeCards();
 		//CPU.cpuSelectFlavor
