@@ -38,6 +38,7 @@ public class TradeCards extends Tohu{
 				if(tradeOne == false) {
 					myHungryGauge[myCurrentGauge] = "■";
 					myCurrentGauge++;
+					System.out.println(myCurrentGauge);
 				}
 				if(tradeOne == true) {
 					CPUHungryGauge[CPUCurrentGauge] = "■";
