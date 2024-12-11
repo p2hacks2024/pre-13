@@ -327,6 +327,7 @@ public class DecideDishes extends DecideRoles{
 					}
 					System.out.println("大盛り鍋奴を作って勝負します");
 					nextGauge = 5;
+					
 					canCreate = true;
 					break;
 				}

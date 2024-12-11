@@ -13,13 +13,13 @@ public class GameResult extends DecideDishes{
 		if(a == false) { //自分か相手の手番を判断して、変えるゲージを決める
 			CPUNextGauge = nextGauge;
 			hungryDamage = roleNumber*CPUNextGauge;
-			for(int i = CPUCurrentGauge; i < hungryDamage; i++) {
+			for(int i = CPUCurrentGauge; i < hungryDamage+CPUCurrentGauge; i++) {
 				CPUHungryGauge[i] = "■";
 			}
 		}else {
 			myNextGauge = nextGauge; 
 			hungryDamage = roleNumber*myNextGauge;
-			for(int i = myCurrentGauge; i < hungryDamage; i++) {
+			for(int i = myCurrentGauge; i < hungryDamage+myCurrentGauge; i++) {
 				myHungryGauge[i] = "■";
 			}
 		}
@@ -31,9 +31,10 @@ public class GameResult extends DecideDishes{
 			CPUNextGauge = 50;
 		}
 
-		myCurrentGauge = myNextGauge;
-		CPUCurrentGauge = CPUNextGauge;
 
+		myCurrentGauge += hungryDamage;
+		CPUCurrentGauge += hungryDamage;
+		
 		System.out.print("自分の満腹ゲージ：");
 		for(int i = 0; i < 50; i++) {
 			System.out.print(myHungryGauge[i]);

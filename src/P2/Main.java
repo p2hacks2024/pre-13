@@ -41,10 +41,12 @@ public class Main{
 		//SelectFlavor.canCreateDish();
 		//dishNumberで色々処理できるはず
 
-		GameResult.attackDamage(true); //ダメージの計算
+		GameResult.attackDamage(false); //ダメージの計算
 		if(GameResult.finalResult() == 0) { //満腹かどうか判断
 			//break;
 		}
+		
+		CookingFlavor.getMyFlavors();
 
 		//-----------------------------------
 		// CPUのターン
@@ -52,16 +54,19 @@ public class Main{
 		//-----------------------------------
 		
 		//CPU.cpuTradeCards(); //CPUがカードを交換する（以下CPUの判定）
+		//System.out.println();
+		
 		//CpuDecideCards.cpuConvertNumber(); //食材に素数を与える
 		//CpuDecideCards.cpuCalculateTohu(); //持っている豆腐を判別
 		//CpuDecideCards.cpuCalculateFlavor(); //持っている調味料を判別
 		
-		//CpuDecideRoles.cpuDecideRoleNumber(); //役判別
+		//CpuDecideRole.cpuDecideRoleNumber(); //役判別
 		//CpuDecideDishes.cpuSelectDishes(); //勝負する料理の決定
 
 		//GameResult.attackDamage(true); //ダメージの計算
 		//if(GameResult.finalResult() == 0) { //満腹かどうか判断
 			//break;
+		//}
 		//}
 		
 	}

@@ -6,6 +6,7 @@ public class CPU {
 
 	static String[] CpuCards = new String[5];
 	static String[] cpuFlavors = new String[100] ;
+	static int cpuNumberOfCards=0;
 	static Random r = new Random();
 
 	public static void cpuDrawTohuCards(String[] args) {
@@ -28,7 +29,7 @@ public class CPU {
 		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
 				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
-
+		cpuNumberOfCards=2;
 		for(int i=0 ; i<2 ; i++) {
 			String card = cards[r.nextInt(34)];
 			cpuFlavors[i] = card;
@@ -46,6 +47,7 @@ public class CPU {
 		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
 				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
+		cpuNumberOfCards+=2;
 		int haveFlavor = 0;
 		for(int j = 0;j < cpuFlavors.length;j++) {
 			if(cpuFlavors[j] == null) {
