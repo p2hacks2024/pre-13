@@ -12,16 +12,16 @@ public class CpuDecideCards extends CPU{
 		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
 
 		for(int i=0 ; i<5 ; i++) {
-			if(CpuCards[i] == "スペード") {
+			if(CpuCards[i] == "木綿豆腐") {
 				cpuAllCards[i] = 2;
 			}
-			if(CpuCards[i] == "ダイヤ") {
+			if(CpuCards[i] == "卵豆腐") {
 				cpuAllCards[i] = 3;
 			}
-			if(CpuCards[i] == "ハート") {
+			if(CpuCards[i] == "絹ごし豆腐") {
 				cpuAllCards[i] = 5;
 			}
-			if(CpuCards[i] == "クラブ") {
+			if(CpuCards[i] == "ゲーミング豆腐") {
 				cpuAllCards[i] = 7;
 			}
 		}
