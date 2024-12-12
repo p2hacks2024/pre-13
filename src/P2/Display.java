@@ -1,3 +1,4 @@
+
 package P2;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -14,7 +15,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -38,10 +38,10 @@ public class Display extends JFrame implements ActionListener {
 	JLabel enTofuLabel[] = new JLabel[5];
 	JLabel guzaiLabel[] = new JLabel[100];
 	JLabel refrigerator[] = new JLabel[2];
-	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel;
-	JPanel titlePanel, buttonPanel,slidePanel,vsPanel,scenePanel;
+	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,kinuLabel,momenLabel,gamingLabel,tamagoLabel;
+	JPanel titlePanel, buttonPanel,slidePanel,vsPanel,scenePanel,tofuPanel;
 	FlowLayout layout1, layout2;
-	ImageIcon title,chef,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen;
+	ImageIcon title,chef,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen,tamago,gaming;
 	ImageIcon slide[] = new ImageIcon[9];
 	CardLayout scene;
 	Display() {
@@ -66,14 +66,18 @@ public class Display extends JFrame implements ActionListener {
 		backGage = new ImageIcon(getClass().getResource("/backgage.png")); // 画像の読み込み（リソースパス）
 		myGageFrame = new ImageIcon(getClass().getResource("/mygageframe.png")); // 画像の読み込み（リソースパス）
 		enGageFrame = new ImageIcon(getClass().getResource("/engageframe.png")); // 画像の読み込み（リソースパス）
+		kinu = new ImageIcon(getClass().getResource("/kinu.png")); // 画像の読み込み（リソースパス）
+		momen= new ImageIcon(getClass().getResource("/momen.png")); // 画像の読み込み（リソースパス）
+		gaming = new ImageIcon(getClass().getResource("/gamingtofu.png")); // 画像の読み込み（リソースパス）
+		tamago= new ImageIcon(getClass().getResource("/tamagotofu.png")); // 画像の読み込み（リソースパス）
 		// レイアウトとパネルの設定
 		layout1 = new FlowLayout(FlowLayout.CENTER, 0, 100);
-
 
 		buttonPanel = new JPanel(layout1);
 		titlePanel = new JPanel(layout1);
 		slidePanel = new JPanel();
 		vsPanel = new JPanel();
+		tofuPanel = new JPanel(new GridLayout(1,5,-50,0));
 		vsPanel.setLayout(null);
 		// タイトルラベルを追加
 		titleLabel = new JLabel(heightResizeImage(title,fheight/3));
@@ -89,6 +93,7 @@ public class Display extends JFrame implements ActionListener {
 		vsPanel.setVisible(true);
 		titlePanel.setVisible(false);
 		buttonPanel.setVisible(false);
+		tofuPanel.setOpaque(false); // 背景を透明にする
 		//ラベルに画像を挿入
 		chefLabel = new JLabel(heightResizeImage(chef,fheight/3+30));
 		refrigerator[0] = new JLabel(heightResizeImage(cRefrigerator,3*fheight/5));
@@ -98,7 +103,12 @@ public class Display extends JFrame implements ActionListener {
 		enBackGageLabel= new JLabel(heightResizeImage(backGage,8*fheight/10));
 		myGageFrameLabel= new JLabel(heightResizeImage(myGageFrame,9*fheight/10));
 		enGageFrameLabel= new JLabel(heightResizeImage(enGageFrame,8*fheight/10));
-		//画像の大きさ調整
+		kinuLabel = new JLabel(heightResizeImage(kinu,150));
+		momenLabel = new JLabel(heightResizeImage(momen,150));
+		gamingLabel = new JLabel(heightResizeImage(gaming,150));
+		tamagoLabel = new JLabel(heightResizeImage(tamago,150));
+		//画像の場所調整
+		tofuPanel.setBounds(100,500,290,150);
 		vsPanel.setBounds(0, 0, 1920, 1080); // x, y, 幅, 高さ
 		chefLabel.setBounds(-150, -900, chef.getIconWidth(), chef.getIconHeight()); // x, y, 幅, 高さ
 		refrigerator[0].setBounds(0, -600, cRefrigerator.getIconWidth(),cRefrigerator.getIconHeight() );
@@ -113,13 +123,18 @@ public class Display extends JFrame implements ActionListener {
 
 		//		refrigerator[1] = new JLabel(oRefrigerator);
 		//対戦画面にラベルを貼る
+		vsPanel.add(tofuPanel);
+		tofuPanel.add(kinuLabel);
+		tofuPanel.add(momenLabel);
+		tofuPanel.add(gamingLabel);
+		tofuPanel.add(tamagoLabel);
 		vsPanel.add(myBackGageLabel);
 		vsPanel.add(enBackGageLabel);
 		vsPanel.add(myGageFrameLabel);
 		vsPanel.add(enGageFrameLabel);
 		vsPanel.add(tableLabel);
 		vsPanel.add(chefLabel);
-		//		vsPanel.setBackground(Color.BLUE);
+//		vsPanel.setBackground(Color.BLUE);
 		//		titlePanel.setBackground(Color.RED);
 		//		buttonPanel.setBackground(Color.GREEN);
 		//		slidePanel.setBackground(Color.YELLOW);
@@ -127,9 +142,9 @@ public class Display extends JFrame implements ActionListener {
 		//		vsPanel.add(myGageLabel);
 		vsPanel.add(refrigerator[1]);
 		vsPanel.add(refrigerator[0]);
-	
 
-				refrigerator[1].setVisible(false);
+
+		refrigerator[1].setVisible(false);
 		//		for(int i = 0;i<myTofuLabel.length;i++) {
 		//			
 		//		}
@@ -156,6 +171,7 @@ public class Display extends JFrame implements ActionListener {
 		// frame.add(backPanel);
 		frame.add(titlePanel, BorderLayout.NORTH); // タイトルパネルを北に配置
 		frame.add(buttonPanel, BorderLayout.SOUTH); // ボタンパネルを南に配置
+		
 		frame.add(vsPanel);
 		frame.add(slidePanel,BorderLayout.CENTER);
 		// フレームの表示
@@ -224,3 +240,8 @@ public class Display extends JFrame implements ActionListener {
 		return resizedIcon;
 	}
 }
+//=======
+//public class Display {
+//	
+//>>>>>>> 0593dd9b5a2d769d9c21c6e6c7c57f02ff47edc8
+//}

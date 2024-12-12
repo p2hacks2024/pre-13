@@ -1,61 +1,76 @@
 package P2;
 
 public class GameResult extends DecideDishes{
-	
+
 	static int hungryDamage = 0;
+	static int cpuHungryDamage = 0;
 	static boolean a;
-	
-	public static void attackDamage() {
-		
-		a = false;
-		
+
+
+	public static void attackDamage(boolean a) {
+		hungryDamage=0;
+		cpuHungryDamage=0;
 		if(a == false) { //自分か相手の手番を判断して、変えるゲージを決める
 			CPUNextGauge = nextGauge;
-			hungryDamage = roleNumber*CPUNextGauge;
-			a = true;
+			cpuHungryDamage = roleNumber*CPUNextGauge;
+			for(int i = CPUCurrentGauge; i < cpuHungryDamage+CPUCurrentGauge; i++) {
+				if(i > 49) {
+					break;
+				}
+				CPUHungryGauge[i] = "■";
+			}
 		}else {
 			myNextGauge = nextGauge; 
-			hungryDamage = roleNumber*myNextGauge;
-			a = false;
+			hungryDamage = CpuDecideRole.getCpuRoleNumber()*myNextGauge;
+			for(int i = myCurrentGauge; i < hungryDamage+myCurrentGauge; i++) {
+				if(i > 49) {
+					break;
+				}
+				myHungryGauge[i] = "■";
+			}
 		}
-		
+
 		if(myNextGauge > 50) {
 			myNextGauge = 50;
 		}
 		if(CPUNextGauge > 50) {
 			CPUNextGauge = 50;
 		}
+
+
+		myCurrentGauge += hungryDamage;
+		CPUCurrentGauge += cpuHungryDamage;
 		
-		for(int i = myCurrentGauge; i < myNextGauge; i++) {
-			myHungryGauge[i] = "■";
-		}
-		myCurrentGauge = myNextGauge;
 		System.out.print("自分の満腹ゲージ：");
 		for(int i = 0; i < 50; i++) {
 			System.out.print(myHungryGauge[i]);
 		}
 		System.out.print("\n");
-		
-		for(int i = CPUCurrentGauge; i < CPUNextGauge; i++) {
-			CPUHungryGauge[i] = "■";
-		}
-		CPUCurrentGauge = CPUNextGauge;
+
+
+		//CPUCurrentGauge = CPUNextGauge;
 		System.out.print("CPUの満腹ゲージ：");
 		for(int i = 0; i < 50; i++) {
 			System.out.print(CPUHungryGauge[i]);
 		}
 		System.out.print("\n");
+
+		System.out.println();
 	}
-	
-	public static void finalResult() {
-		
+
+
+	public static int finalResult() {
+
 		if(CPUHungryGauge[49] == "■") {
 			System.out.print("お残し！あんたの勝ち！");
+			return 0;
 		}
 		if(myHungryGauge[49] == "■") {
 			System.out.print("お残し！あんたの負け！");
+			return 0;
 		}
-		
+		return 1;
+
 	}
-	
+
 }

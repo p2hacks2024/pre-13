@@ -5,8 +5,8 @@ public class DecideCards extends TradeCards{
 
 	static int[] myAllCards = new int[5];
 	static int[] myAllFlavors = new int[100];
-	static int TohuX = 1;
-	static int FlavorX = 1;
+	static long TohuX = 1;
+	static long FlavorX = 1;
 
 	public static void convertNumber() {
 		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
@@ -55,16 +55,16 @@ public class DecideCards extends TradeCards{
 
 	}
 
-	public static int calculateTohu() {
-
+	public static long calculateTohu() {
+		TohuX = 1;
 		for(int i=0 ; i<5 ; i++) {
 			TohuX = myAllCards[i]*TohuX;
 		}
 		return TohuX;
 	}
 
-	public static int calculateFlavor() {
-
+	public static long calculateFlavor() {
+		FlavorX = 1;
 		for(int i=0 ;myFlavors[i]!=null ; i++) {
 			FlavorX = myAllFlavors[i]*FlavorX;
 		}
