@@ -12,16 +12,16 @@ public class DecideCards extends TradeCards{
 		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
 
 		for(int i=0 ; i<5 ; i++) {
-			if(myCards[i] == "スペード") {
+			if(myCards[i] == "木綿豆腐") {
 				myAllCards[i] = 2;
 			}
-			if(myCards[i] == "ダイヤ") {
+			if(myCards[i] == "卵豆腐") {
 				myAllCards[i] = 3;
 			}
-			if(myCards[i] == "ハート") {
+			if(myCards[i] == "絹ごし豆腐") {
 				myAllCards[i] = 5;
 			}
-			if(myCards[i] == "クラブ") {
+			if(myCards[i] == "ゲーミング豆腐") {
 				myAllCards[i] = 7;
 			}
 		}

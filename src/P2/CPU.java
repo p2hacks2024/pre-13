@@ -29,6 +29,9 @@ public class CPU extends Hungry{
 		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
 				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
+		for(int i = 0;i < 100;i ++) {
+			cpuFlavors[i] = null;
+		}
 		cpuNumberOfCards=2;
 		for(int i=0 ; i<2 ; i++) {
 			String card = cards[r.nextInt(34)];
@@ -65,10 +68,12 @@ public class CPU extends Hungry{
 			//他のカード分も作る
 
 		}
-		for(int i =0;i < 6;i++) {
+		for(int i =0;i < 100;i++) {
 			if(cpuFlavors[i] != null) {
 				//System.out.println("???");
 				System.out.println(cpuFlavors[i]);
+			}else {
+				break;
 			}
 		}
 	}
@@ -83,13 +88,13 @@ public class CPU extends Hungry{
 	public static void cpuTradeCards() {
 		int sp = 0,ha = 0, di = 0, cl = 0;
 		for(int i = 0;i < 5;i++) {
-			if(CpuCards[i].equals("スペード")) {
+			if(CpuCards[i].equals("木綿豆腐")) {
 				sp++;
-			}else if(CpuCards[i].equals("ハート")) {
+			}else if(CpuCards[i].equals("絹ごし豆腐")) {
 				ha++;
-			}else if(CpuCards[i].equals("ダイヤ")) {
+			}else if(CpuCards[i].equals("卵豆腐")) {
 				di++;
-			}else if(CpuCards[i].equals("クラブ")){
+			}else if(CpuCards[i].equals("ゲーミング豆腐")){
 				cl++;
 			}
 		}
@@ -98,8 +103,8 @@ public class CPU extends Hungry{
 		if(CPUCurrentGauge <45) {
 			if(sp == 1) {
 				for(int i = 0;i < 5;i++) {
-					if(CpuCards[i].equals("スペード")) {
-						System.out.println("CPUはスペードを食べた");
+					if(CpuCards[i].equals("木綿")) {
+						System.out.println("CPUは木綿豆腐を食べた");
 						change[changeNamber] = i;
 						changeNamber++;
 						CPUHungryGauge[CPUCurrentGauge] = "■";
@@ -109,8 +114,8 @@ public class CPU extends Hungry{
 			}
 			if(di == 1) {
 				for(int i = 0;i < 5;i++) {
-					if(CpuCards[i].equals("ダイヤ")) {
-						System.out.println("CPUはダイヤを食べた");
+					if(CpuCards[i].equals("卵豆腐")) {
+						System.out.println("CPUは卵豆腐を食べた");
 						change[changeNamber] = i;
 						changeNamber++;
 						CPUHungryGauge[CPUCurrentGauge] = "■";
@@ -120,8 +125,8 @@ public class CPU extends Hungry{
 			}
 			if(ha == 1) {
 				for(int i = 0;i < 5;i++) {
-					if(CpuCards[i].equals("ハート")) {
-						System.out.println("CPUはハートを食べた");
+					if(CpuCards[i].equals("絹ごし")) {
+						System.out.println("CPUは絹ごし豆腐を食べた");
 						change[changeNamber] = i;
 						changeNamber++;
 						CPUHungryGauge[CPUCurrentGauge] = "■";
@@ -131,8 +136,8 @@ public class CPU extends Hungry{
 			}
 			if(cl == 1) {
 				for(int i = 0;i < 5;i++) {
-					if(CpuCards[i].equals("クラブ")) {
-						System.out.println("CPUはクラブを食べた");
+					if(CpuCards[i].equals("ゲーミング豆腐")) {
+						System.out.println("CPUはゲーミング豆腐を食べた");
 						change[changeNamber] = i;
 						changeNamber++;
 						CPUHungryGauge[CPUCurrentGauge] = "■";
