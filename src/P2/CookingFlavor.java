@@ -22,7 +22,6 @@ public class CookingFlavor extends Hungry{
 			//System.out.println(card);
 			numberOfCards++;
 			myFlavors[i] = card;
-			//numberOfCards++;
 
 			if(card == "醤油") {
 				//醤油の画像を座標i(仮)に表示、豆腐からずらす
@@ -62,5 +61,10 @@ public class CookingFlavor extends Hungry{
 		}
 	}*/
 
+	public static void getMyFlavors() {
+		for(int i =0;i < numberOfCards;i++) {
+			System.out.println(myFlavors[i]);
+		}
+	}
 
 }

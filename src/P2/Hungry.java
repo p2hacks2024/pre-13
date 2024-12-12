@@ -16,8 +16,8 @@ public class Hungry {
 		if(initHungry == false) {
 			myHungryGauge = new String[50];
 			CPUHungryGauge = new String[50];
-			myCurrentGauge = 0;
-			CPUCurrentGauge = 0;
+			//myCurrentGauge = 0;
+			//CPUCurrentGauge = 0;
 			for(int i = 0; i < 50; i++) {
 				myHungryGauge[i] = "□";
 				CPUHungryGauge[i] = "□";
