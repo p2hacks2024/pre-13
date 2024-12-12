@@ -14,6 +14,7 @@ public class Main{
 			Scanner scanMain = new Scanner(System.in);
 			int gameFlow = scanMain.nextInt();
 			System.out.println();
+      
 			if(gameFlow == 1) {
 				CookingFlavor.startDrawElseCards(args); //プレイヤーが最初に引く調味料2枚
 				CPU.startCpuDrawElseCards(args); //CPUが最初に引く調味料2枚
@@ -28,7 +29,7 @@ public class Main{
 				System.out.println();
 
 				while(true){
-					//new Display();
+					new Display();
 					Tohu.drawTohuCards(args); //プレイヤーが豆腐を引く
 					CookingFlavor.drawElseCards(args); //プレイヤーが調味料を２枚引く
 					System.out.println(); 
