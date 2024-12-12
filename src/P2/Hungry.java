@@ -12,7 +12,6 @@ public class Hungry {
 	static int CPUNextGauge;
 
 	public static void increaseHungry() {
-
 		if(initHungry == false) {
 			myHungryGauge = new String[50];
 			CPUHungryGauge = new String[50];
@@ -37,6 +36,11 @@ public class Hungry {
 		}
 		System.out.print("\n");
 
+	}
+	public static void endHungry() {
+		myCurrentGauge=0;
+		CPUCurrentGauge=0;
+		initHungry = false;
 	}
 
 }
