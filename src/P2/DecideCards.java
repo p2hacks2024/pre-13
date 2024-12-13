@@ -4,7 +4,7 @@ package P2;
 public class DecideCards extends TradeCards{
 
 	static int[] myAllCards = new int[5];
-	static int[] myAllFlavors = new int[100];
+	static int[] myAllFlavors = new int[8];
 	static long TohuX = 1;
 	static long FlavorX = 1;
 
@@ -65,8 +65,11 @@ public class DecideCards extends TradeCards{
 
 	public static long calculateFlavor() {
 		FlavorX = 1;
-		for(int i=0 ;myFlavors[i]!=null ; i++) {
+		for(int i=0 ;myFlavors[i]!=null; i++) {
 			FlavorX = myAllFlavors[i]*FlavorX;
+			if(i == 7) {
+				break;
+			}
 		}
 		return FlavorX;
 	}

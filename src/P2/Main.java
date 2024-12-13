@@ -32,7 +32,7 @@ public class Main{
 				System.out.println();
 
 				while(true){
-					new Display();
+					//new Display();
 					Tohu.drawTohuCards(args); //プレイヤーが豆腐を引く
 					CookingFlavor.drawElseCards(args); //プレイヤーが調味料を２枚引く
 					System.out.println(); 
