@@ -14,7 +14,10 @@ public class CookingFlavor extends Hungry{
 	public static void startDrawElseCards(String[] arg) {
 		String[] cards = { "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
 				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
-
+		for(int i = 0;i < 100;i ++) {
+			myFlavors[i] = null;
+		}
+		numberOfCards = 0;
 		Random r = new Random();
 
 		for(int i=0 ; i<2 ; i++) {

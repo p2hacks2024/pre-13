@@ -62,11 +62,11 @@ public class GameResult extends DecideDishes{
 	public static int finalResult() {
 
 		if(CPUHungryGauge[49] == "■") {
-			System.out.print("お残し！あんたの勝ち！");
+			System.out.println("お残し！あんたの勝ち！");
 			return 0;
 		}
 		if(myHungryGauge[49] == "■") {
-			System.out.print("お残し！あんたの負け！");
+			System.out.println("お残し！あんたの負け！");
 			return 0;
 		}
 		return 1;

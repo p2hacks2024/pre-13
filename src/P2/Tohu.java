@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Tohu extends CookingFlavor{
 
-	static String[] cards = { "スペード", "ダイヤ", "ハート", "クラブ" };
+	static String[] cards = { "木綿豆腐", "卵豆腐", "絹ごし豆腐", "ゲーミング豆腐" };
 	static String[] myCards = new String[5];
 	static Random r = new Random();
 
