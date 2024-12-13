@@ -5,7 +5,7 @@ import java.util.Random;
 public class CPU extends Hungry{
 
 	static String[] CpuCards = new String[5];
-	static String[] cpuFlavors = new String[100] ;
+	static String[] cpuFlavors = new String[8] ;
 	static int cpuNumberOfCards = 0;
 	static Random r = new Random();
 
@@ -24,7 +24,7 @@ public class CPU extends Hungry{
 
 		}
 	}
-	
+
 	public static String getCpuCards(int a) {
 		return CpuCards[a];
 	}
@@ -33,7 +33,7 @@ public class CPU extends Hungry{
 		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",
 				"ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","ネギ","葉物野菜","葉物野菜","葉物野菜","葉物野菜","葉物野菜","根菜","根菜","根菜","根菜","根菜","根菜" };
 		Random r = new Random();
-		for(int i = 0;i < 100;i ++) {
+		for(int i = 0;i < 8;i ++) {
 			cpuFlavors[i] = null;
 		}
 		cpuNumberOfCards=2;
@@ -62,17 +62,27 @@ public class CPU extends Hungry{
 				break;
 			}
 		}
-		for(int i=0 ; i<2 ; i++) {
-			String card = cards[r.nextInt(34)];
-			cpuFlavors[i + haveFlavor] = card;
-
-			if(card == "醤油") {
-				//醤油の画像を座標i(仮)に表示、豆腐からずらす
+		if(haveFlavor == 7) {
+			for(int i=0 ; i<1 ; i++) {
+				String card = cards[r.nextInt(34)];
+				cpuFlavors[i + haveFlavor] = card;
+				if(card == "醤油") {
+					//醤油の画像を座標i(仮)に表示、豆腐からずらす
+				}
+				//他のカード分も作る
 			}
-			//他のカード分も作る
-
+		}else if (haveFlavor == 8){
+		}else {
+			for(int i=0 ; i<2 ; i++) {
+				String card = cards[r.nextInt(34)];
+				cpuFlavors[i + haveFlavor] = card;
+				if(card == "醤油") {
+					//醤油の画像を座標i(仮)に表示、豆腐からずらす
+				}
+				//他のカード分も作る
+			}
 		}
-		for(int i =0;i < 100;i++) {
+		for(int i =0;i < 8;i++) {
 			if(cpuFlavors[i] != null) {
 				//System.out.println("???");
 				System.out.println(cpuFlavors[i]);

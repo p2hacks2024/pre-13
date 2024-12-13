@@ -4,7 +4,7 @@ package P2;
 public class CpuDecideCards extends CPU{
 
 	static int[] cpuAllCards = new int[5];
-	static int[] cpuAllFlavors = new int[100];
+	static int[] cpuAllFlavors = new int[8];
 	static long cpuTohuX = 1;
 	static long cpuFlavorX = 1;
 
@@ -65,8 +65,11 @@ public class CpuDecideCards extends CPU{
 
 	public static long cpuCalculateFlavor() {
 		cpuFlavorX = 1;
-		for(int i=0 ;cpuFlavors[i]!=null ; i++) {
+		for(int i=0 ;cpuFlavors[i]!=null; i++) {
 			cpuFlavorX = cpuAllFlavors[i]*cpuFlavorX;
+			if(i == 7) {
+				break;
+			}
 		}
 		return cpuFlavorX;
 	}
