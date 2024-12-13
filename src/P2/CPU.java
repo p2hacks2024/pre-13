@@ -24,6 +24,10 @@ public class CPU extends Hungry{
 
 		}
 	}
+	
+	public static String getCpuCards(int a) {
+		return CpuCards[a];
+	}
 
 	public static void startCpuDrawElseCards(String[] arg) {
 		String[] cards ={ "醤油","醤油","醤油","味噌","味噌","味噌","辛味調味料","辛味調味料","出汁","出汁","出汁","出汁","出汁","肉","肉","肉","肉",

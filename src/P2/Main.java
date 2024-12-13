@@ -8,11 +8,14 @@ import java.util.Scanner;
 public class Main{
 
 	public static void main(String[] args) {
+		int gameRestart = 0,gameFlow = 0;
 		//start
 		while(true) {
+			if(gameRestart == 0) {
 			System.out.println("操作を入力してください : 1.ゲームを始める 2.ゲームを閉じる");
 			Scanner scanMain = new Scanner(System.in);
-			int gameFlow = scanMain.nextInt();
+			gameFlow = scanMain.nextInt();
+			}
 			System.out.println();
 			if(gameFlow == 1) {
 				CookingFlavor.startDrawElseCards(args); //プレイヤーが最初に引く調味料2枚
@@ -59,7 +62,7 @@ public class Main{
 						break;
 					}
 
-					//CookingFlavor.getMyFlavors();
+					//CookingFlavor.printMyFlavors();
 
 
 					//-----------------------------------
@@ -84,6 +87,14 @@ public class Main{
 				}
 				Hungry.endHungry();
 				System.out.println();
+				System.out.println("ゲームを続けますか : 1.続ける 2.タイトルへ戻る");
+				Scanner scanEnd = new Scanner(System.in);
+				int gameEnd = scanEnd.nextInt();
+				if(gameEnd == 1) {
+					gameRestart = 1;
+				}else if(gameEnd == 2){
+					gameRestart = 0;
+				}
 			}else if(gameFlow == 2) {
 				break;
 			}
