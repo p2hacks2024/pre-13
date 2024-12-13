@@ -1,5 +1,6 @@
 
 package P2;
+import java.util.Random;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -9,6 +10,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.TextField;
+import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -36,12 +38,14 @@ public class Display extends JFrame implements ActionListener {
 	JLabel slideLabel[]=new JLabel[9] ;
 	JLabel myTofuLabel[] = new JLabel[5];
 	JLabel enTofuLabel[] = new JLabel[5];
-	JLabel guzaiLabel[] = new JLabel[100];
+	JLabel myGuzaiLabel[] = new JLabel[100];
+	JLabel enGuzaiLabel[] = new JLabel[100];
 	JLabel refrigerator[] = new JLabel[2];
-	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,kinuLabel,momenLabel,gamingLabel,tamagoLabel;
-	JPanel titlePanel, buttonPanel,slidePanel,vsPanel,scenePanel,tofuPanel;
+	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,backgroundLabel;
+	JPanel titlePanel, buttonPanel,slidePanel,vsPanel,scenePanel,myTofuPanel,enTofuPanel,myGuzaiPanel,enGuzaiPanel;
 	FlowLayout layout1, layout2;
-	ImageIcon title,chef,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen,tamago,gaming;
+	ImageIcon title,chef,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen,tamago,gaming,background,
+	soysauce,miso,negi,niku,dasi,karami,hamono,konsai;
 	ImageIcon slide[] = new ImageIcon[9];
 	CardLayout scene;
 	Display() {
@@ -70,14 +74,26 @@ public class Display extends JFrame implements ActionListener {
 		momen= new ImageIcon(getClass().getResource("/momen.png")); // 画像の読み込み（リソースパス）
 		gaming = new ImageIcon(getClass().getResource("/gamingtofu.png")); // 画像の読み込み（リソースパス）
 		tamago= new ImageIcon(getClass().getResource("/tamagotofu.png")); // 画像の読み込み（リソースパス）
+		background = new ImageIcon(getClass().getResource("/background.png")); // 画像の読み込み（リソースパス）
+		soysauce= new ImageIcon(getClass().getResource("/soysauce.png")); // 画像の読み込み（リソースパス）
+		miso = new ImageIcon(getClass().getResource("/miso.png")); // 画像の読み込み（リソースパス）
+		negi = new ImageIcon(getClass().getResource("/negi.png")); // 画像の読み込み（リソースパス）
+		niku = new ImageIcon(getClass().getResource("/niku.png")); // 画像の読み込み（リソースパス）
+		dasi = new ImageIcon(getClass().getResource("/dasi.png")); // 画像の読み込み（リソースパス）
+		karami= new ImageIcon(getClass().getResource("/karami.png")); // 画像の読み込み（リソースパス）
+		hamono= new ImageIcon(getClass().getResource("/hamono.png")); // 画像の読み込み（リソースパス）
+		konsai= new ImageIcon(getClass().getResource("/konsai.png")); // 画像の読み込み（リソースパス）
 		// レイアウトとパネルの設定
 		layout1 = new FlowLayout(FlowLayout.CENTER, 0, 100);
-
+		layout2 = new FlowLayout(FlowLayout.LEFT,0,100);
 		buttonPanel = new JPanel(layout1);
 		titlePanel = new JPanel(layout1);
 		slidePanel = new JPanel();
 		vsPanel = new JPanel();
-		tofuPanel = new JPanel(new GridLayout(1,5,-50,0));
+		myTofuPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,-5,0));//x,y、
+		enTofuPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));//x,y、
+		myGuzaiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+		enGuzaiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
 		vsPanel.setLayout(null);
 		// タイトルラベルを追加
 		titleLabel = new JLabel(heightResizeImage(title,fheight/3));
@@ -93,7 +109,10 @@ public class Display extends JFrame implements ActionListener {
 		vsPanel.setVisible(true);
 		titlePanel.setVisible(false);
 		buttonPanel.setVisible(false);
-		tofuPanel.setOpaque(false); // 背景を透明にする
+		myTofuPanel.setOpaque(false); // 背景を透明にする
+		enTofuPanel.setOpaque(false); // 背景を透明にする
+		myGuzaiPanel.setOpaque(false); // 背景を透明にする
+		enGuzaiPanel.setOpaque(false); // 背景を透明にする
 		//ラベルに画像を挿入
 		chefLabel = new JLabel(heightResizeImage(chef,fheight/3+30));
 		refrigerator[0] = new JLabel(heightResizeImage(cRefrigerator,3*fheight/5));
@@ -103,41 +122,79 @@ public class Display extends JFrame implements ActionListener {
 		enBackGageLabel= new JLabel(heightResizeImage(backGage,8*fheight/10));
 		myGageFrameLabel= new JLabel(heightResizeImage(myGageFrame,9*fheight/10));
 		enGageFrameLabel= new JLabel(heightResizeImage(enGageFrame,8*fheight/10));
-		kinuLabel = new JLabel(heightResizeImage(kinu,150));
-		momenLabel = new JLabel(heightResizeImage(momen,150));
-		gamingLabel = new JLabel(heightResizeImage(gaming,150));
-		tamagoLabel = new JLabel(heightResizeImage(tamago,150));
+		//後で変える
+		myGuzaiLabel[0]=new JLabel(heightResizeImage(niku,150));
+		myGuzaiLabel[1]=new JLabel(heightResizeImage(niku,150));
+		myGuzaiLabel[2]=new JLabel(heightResizeImage(niku,150));
+		myGuzaiLabel[3]=new JLabel(heightResizeImage(niku,150));
+		myGuzaiLabel[4]=new JLabel(heightResizeImage(niku,150));
+		myGuzaiLabel[5]=new JLabel(heightResizeImage(niku,150));
+		enGuzaiLabel[0]=new JLabel(heightResizeImage(niku,150));
+		//ここまで
+		backgroundLabel = new JLabel(heightResizeImage(background,fheight));
+		//		soysauceLabel = new JLabel(heightResizeImage(soysauce,150));
+		//		misoLabel = new JLabel(heightResizeImage(miso,150));
+		//		negiLabel = new JLabel(heightResizeImage(negi,150));
+		//		nikuLabel = new JLabel(heightResizeImage(niku,150));
 		//画像の場所調整
-		tofuPanel.setBounds(100,500,290,150);
+		myTofuPanel.setBounds(100,500,730,150);
+		enTofuPanel.setBounds(250,250,500,100);
+		myGuzaiPanel.setBounds(820,400,470,300);
+		enGuzaiPanel.setBounds(770,250,470,300);
 		vsPanel.setBounds(0, 0, 1920, 1080); // x, y, 幅, 高さ
 		chefLabel.setBounds(-150, -900, chef.getIconWidth(), chef.getIconHeight()); // x, y, 幅, 高さ
 		refrigerator[0].setBounds(0, -600, cRefrigerator.getIconWidth(),cRefrigerator.getIconHeight() );
 		refrigerator[1].setBounds(0, -600, oRefrigerator.getIconWidth(),oRefrigerator.getIconHeight() );
 		tableLabel.setBounds(0,30,fwidth,fheight);
 		myGageFrameLabel.setBounds(-670,-800,backGage.getIconWidth(),backGage.getIconHeight());
-		enGageFrameLabel.setBounds(-450,-1100,backGage.getIconWidth(),backGage.getIconHeight());
+		enGageFrameLabel.setBounds(-550,-1100,backGage.getIconWidth(),backGage.getIconHeight());
 		myBackGageLabel.setBounds(-670,-800,backGage.getIconWidth(),backGage.getIconHeight());
-		enBackGageLabel.setBounds(-450,-1100,backGage.getIconWidth(),backGage.getIconHeight());
+		enBackGageLabel.setBounds(-550,-1100,backGage.getIconWidth(),backGage.getIconHeight());
+		backgroundLabel.setBounds(0, 0, fwidth, fheight);
 		//		enGageLabel = new JLabel(eGage);
 		//		myGageLabel= new JLabel(myGage);
-
+		MouseListener shokuzaiClick = new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	TradeCards TofuTrade = new TradeCards();
+		        JLabel clickedLabel = (JLabel) e.getSource();
+		        TofuTrade.TradeCard();
+		    }
+		};
 		//		refrigerator[1] = new JLabel(oRefrigerator);
 		//対戦画面にラベルを貼る
-		vsPanel.add(tofuPanel);
-		tofuPanel.add(kinuLabel);
-		tofuPanel.add(momenLabel);
-		tofuPanel.add(gamingLabel);
-		tofuPanel.add(tamagoLabel);
+		vsPanel.add(myTofuPanel);
+		vsPanel.add(enTofuPanel);
+		vsPanel.add(myGuzaiPanel);
+		vsPanel.add(enGuzaiPanel);
+		//食材配り
+		for (int i = 0;i<5;i++) {
+			myTofuLabel[i] = randomTofu(150);
+			myTofuPanel.add(myTofuLabel[i]);
+			myTofuLabel[i].addMouseListener(shokuzaiClick);
+			enTofuLabel[i]= randomTofu(100);
+			enTofuPanel.add(enTofuLabel[i]);
+		}
+		for (int i = 0;i<4;i++) {
+			myGuzaiLabel[i] = randomGuzai(120);
+			myGuzaiPanel.add(myGuzaiLabel[i]);
+			enGuzaiLabel[i] = randomGuzai(100);
+			enGuzaiPanel.add(enGuzaiLabel[i]);
+		}
+		
+
 		vsPanel.add(myBackGageLabel);
 		vsPanel.add(enBackGageLabel);
 		vsPanel.add(myGageFrameLabel);
 		vsPanel.add(enGageFrameLabel);
 		vsPanel.add(tableLabel);
 		vsPanel.add(chefLabel);
-//		vsPanel.setBackground(Color.BLUE);
+
+		//		vsPanel.setBackground(Color.BLUE);
 		//		titlePanel.setBackground(Color.RED);
 		//		buttonPanel.setBackground(Color.GREEN);
 		//		slidePanel.setBackground(Color.YELLOW);
+		enGuzaiPanel.setBackground(Color.GREEN);
 		//		vsPanel.add(enGageLabel);
 		//		vsPanel.add(myGageLabel);
 		vsPanel.add(refrigerator[1]);
@@ -148,14 +205,15 @@ public class Display extends JFrame implements ActionListener {
 		//		for(int i = 0;i<myTofuLabel.length;i++) {
 		//			
 		//		}
-
+		vsPanel.add(backgroundLabel);
 		// ボタンの設定
 		sButton = new JButton("start");
 		sButton.setPreferredSize(new Dimension(200, 150)); // ボタンサイズを指定
 		sButton.addActionListener(this);
 		buttonPanel.add(sButton);
 		// パネルをシーンに追加
-
+		
+	
 		//すべてのパネルをレイアウトに追加
 		//		scenePanel = new JPanel();
 		//		scene = new CardLayout();
@@ -171,7 +229,7 @@ public class Display extends JFrame implements ActionListener {
 		// frame.add(backPanel);
 		frame.add(titlePanel, BorderLayout.NORTH); // タイトルパネルを北に配置
 		frame.add(buttonPanel, BorderLayout.SOUTH); // ボタンパネルを南に配置
-		
+
 		frame.add(vsPanel);
 		frame.add(slidePanel,BorderLayout.CENTER);
 		// フレームの表示
@@ -238,6 +296,44 @@ public class Display extends JFrame implements ActionListener {
 		Image resizedImage = originalImage.getScaledInstance(targetWidth, targetHeight, Image.SCALE_SMOOTH);
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		return resizedIcon;
+	}
+	public JLabel randomTofu(int size) {
+		JLabel rndtofu = new JLabel();
+		Random random = new Random();
+		int randomInt = random.nextInt(4);
+		if(randomInt== 0) {
+			rndtofu = new JLabel(heightResizeImage(kinu,size));
+		}else if(randomInt== 1) {
+			rndtofu = new JLabel(heightResizeImage(momen,size));
+		}else if(randomInt == 2) {
+			rndtofu = new JLabel(heightResizeImage(gaming,size));
+		}else if(randomInt == 3) {
+			rndtofu = new JLabel(heightResizeImage(tamago,size));
+		}
+		return rndtofu;
+	}
+	public JLabel randomGuzai(int size) {
+		JLabel rndguzai = new JLabel();
+		Random random = new Random();
+		int randomInt = random.nextInt(8);
+		if(randomInt== 0) {
+			rndguzai = new JLabel(heightResizeImage(soysauce,size));
+		}else if(randomInt== 1) {
+			rndguzai = new JLabel(heightResizeImage(miso,size));
+		}else if(randomInt == 2) {
+			rndguzai = new JLabel(heightResizeImage(negi,size));
+		}else if(randomInt == 3) {
+			rndguzai = new JLabel(heightResizeImage(niku,size));
+		}else if(randomInt== 4) {
+			rndguzai = new JLabel(heightResizeImage(dasi,size));
+		}else if(randomInt== 5) {
+			rndguzai = new JLabel(heightResizeImage(karami,size));
+		}else if(randomInt ==6) {
+			rndguzai = new JLabel(heightResizeImage(hamono,size));
+		}else if(randomInt == 7) {
+			rndguzai = new JLabel(heightResizeImage(konsai,size));
+		}
+		return rndguzai;
 	}
 }
 //=======
