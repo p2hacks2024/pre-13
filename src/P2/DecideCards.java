@@ -4,24 +4,24 @@ package P2;
 public class DecideCards extends TradeCards{
 
 	static int[] myAllCards = new int[5];
-	static int[] myAllFlavors = new int[100];
-	static int TohuX = 1;
-	static int FlavorX = 1;
+	static int[] myAllFlavors = new int[8];
+	static long TohuX = 1;
+	static long FlavorX = 1;
 
 	public static void convertNumber() {
 		//食材に素数を与える、積で役や料理を特定(最初に考えた人ありがとう)
 
 		for(int i=0 ; i<5 ; i++) {
-			if(myCards[i] == "スペード") {
+			if(myCards[i] == "木綿豆腐") {
 				myAllCards[i] = 2;
 			}
-			if(myCards[i] == "ダイヤ") {
+			if(myCards[i] == "卵豆腐") {
 				myAllCards[i] = 3;
 			}
-			if(myCards[i] == "ハート") {
+			if(myCards[i] == "絹ごし豆腐") {
 				myAllCards[i] = 5;
 			}
-			if(myCards[i] == "クラブ") {
+			if(myCards[i] == "ゲーミング豆腐") {
 				myAllCards[i] = 7;
 			}
 		}
@@ -55,18 +55,21 @@ public class DecideCards extends TradeCards{
 
 	}
 
-	public static int calculateTohu() {
-
+	public static long calculateTohu() {
+		TohuX = 1;
 		for(int i=0 ; i<5 ; i++) {
 			TohuX = myAllCards[i]*TohuX;
 		}
 		return TohuX;
 	}
 
-	public static int calculateFlavor() {
-
-		for(int i=0 ;myFlavors[i]!=null ; i++) {
+	public static long calculateFlavor() {
+		FlavorX = 1;
+		for(int i=0 ;myFlavors[i]!=null; i++) {
 			FlavorX = myAllFlavors[i]*FlavorX;
+			if(i == 7) {
+				break;
+			}
 		}
 		return FlavorX;
 	}

@@ -11,13 +11,19 @@ public class Hungry {
 	static int CPUCurrentGauge;
 	static int CPUNextGauge;
 
+	public static int getMyCurrentGauge() {
+		return myCurrentGauge;
+	}
+	public static int getCpuCurrentGauge() {
+		return CPUCurrentGauge;
+	}
+	
 	public static void increaseHungry() {
-
 		if(initHungry == false) {
 			myHungryGauge = new String[50];
 			CPUHungryGauge = new String[50];
-			myCurrentGauge = 0;
-			CPUCurrentGauge = 0;
+			//myCurrentGauge = 0;
+			//CPUCurrentGauge = 0;
 			for(int i = 0; i < 50; i++) {
 				myHungryGauge[i] = "□";
 				CPUHungryGauge[i] = "□";
@@ -37,6 +43,11 @@ public class Hungry {
 		}
 		System.out.print("\n");
 
+	}
+	public static void endHungry() {
+		myCurrentGauge=0;
+		CPUCurrentGauge=0;
+		initHungry = false;
 	}
 
 }

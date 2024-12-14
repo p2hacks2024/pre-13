@@ -11,7 +11,12 @@ public class DecideDishes extends DecideRoles{
 	static boolean y = false;
 	static boolean z = false;
 	static int alpha = 0;
+	static String myDish;
 
+	public static String getDishNumber() {
+		return myDish;
+	}
+	
 	public static void selectDishes() { //料理ごとに数値を設定
 
 		canCreate = false;
@@ -80,9 +85,10 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards--;
+					myDish = "冷奴";
 					System.out.println("冷奴を作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
@@ -98,9 +104,10 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards--;
+					myDish = "豆腐の味噌漬け";
 					System.out.println("豆腐の味噌漬けを作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
@@ -116,9 +123,10 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //肉を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards--;
+					myDish = "豆腐ハンバーグ";
 					System.out.println("豆腐ハンバーグを作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
@@ -134,9 +142,10 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //ネギを削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards--;
+					myDish = "焼き豆腐";
 					System.out.println("焼き豆腐を作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
@@ -155,15 +164,15 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "ネギ" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=2;
+					myDish = "ネギ乗せ冷奴";
 					System.out.println("ネギ乗せ冷奴を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
@@ -179,15 +188,15 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "肉" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=2;
+					myDish = "麻婆豆腐";
 					System.out.println("麻婆豆腐を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
@@ -203,15 +212,15 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "根菜" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //根菜を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=2;
+					myDish = "豆腐の煮物";
 					System.out.println("豆腐の煮物を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
@@ -227,15 +236,15 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "葉物野菜" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //葉物野菜を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=2;
+					myDish = "辛味豆腐サラダ";
 					System.out.println("辛味豆腐サラダを作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
@@ -251,15 +260,15 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "ネギ" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=2;
+					myDish = "出汁ジュレ冷奴";
 					System.out.println("出汁ジュレ冷奴を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
@@ -278,21 +287,20 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "出汁" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 						if((myFlavors[i] == "ネギ" || myFlavors[i] == "葉物野菜") && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
 							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=3;
+					myDish = "味噌汁";
 					System.out.println("味噌汁を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
@@ -308,21 +316,20 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "肉" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 						if((myFlavors[i] == "ネギ" || myFlavors[i] == "根菜" || myFlavors[i] == "葉物野菜") && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
 							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=3;
+					myDish = "鍋";
 					System.out.println("鍋を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
@@ -338,21 +345,24 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+<<<<<<< HEAD
 							numberOfCards -= 3;
+=======
+>>>>>>> 6f30a21c1598c104b9baece3b90818147bab502d
 						}
 						if(myFlavors[i] == "出汁" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
 							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
-							numberOfCards--;
 						}
 						if(myFlavors[i] == "根菜" && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //根菜を削除
 							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
-							numberOfCards--;
 						}
 					}
+					numberOfCards-=3;
+					myDish = "味噌煮込み豆腐";
 					System.out.println("味噌煮込み豆腐を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
@@ -382,9 +392,13 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
 							myFlavors[numberOfCards-3] = null; //後ろから三、四番目の調理カードと入れ替え
 							alpha++;
-							numberOfCards--;
 						}
 					}
+<<<<<<< HEAD
+=======
+					numberOfCards-=4;
+					myDish = "大盛り鍋";
+>>>>>>> 6f30a21c1598c104b9baece3b90818147bab502d
 					System.out.println("大盛り鍋を作って勝負します");
 					nextGauge = 5;
 					canCreate = true;
@@ -395,6 +409,7 @@ public class DecideDishes extends DecideRoles{
 			//作らない
 
 			if(dishNumber == 100) {
+				myDish = "なし";
 				System.out.println("料理を作らず勝負します");
 				nextGauge = 1;
 				canCreate = true;
@@ -402,5 +417,7 @@ public class DecideDishes extends DecideRoles{
 			}
 
 		}	
+
+		System.out.println();
 	}
 }
