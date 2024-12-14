@@ -89,11 +89,12 @@ public class DecideDishes extends DecideRoles{
 						if(myFlavors[i] == "醤油" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
+							numberOfCards--;
 							x = true;
 							System.out.println("aaa");
 						}
 					}
-					numberOfCards--;
+			
 					myDish = "冷奴";
 					System.out.println("冷奴を作って勝負します");
 					nextGauge = 2;
