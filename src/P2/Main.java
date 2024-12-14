@@ -46,7 +46,7 @@ public class Main{
 					System.out.println("Playerのターンです\n");
 					//--------------------------------------
 
-					TradeCards.TradeCard(); //プレイヤーがカードを交換する
+//					TradeCards.TradeCard(); //プレイヤーがカードを交換する
 					DecideCards.convertNumber(); //食材に素数を与える
 					DecideCards.calculateTohu(); //持っている豆腐を判別
 					DecideCards.calculateFlavor(); //持っている調味料を判別
