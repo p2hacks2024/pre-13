@@ -16,7 +16,7 @@ public class DecideDishes extends DecideRoles{
 	public static String getDishNumber() {
 		return myDish;
 	}
-	
+
 	public static void selectDishes() { //料理ごとに数値を設定
 
 		canCreate = false;
@@ -25,6 +25,7 @@ public class DecideDishes extends DecideRoles{
 		y = false;
 		z = false;
 		alpha = 0;
+		int reCount = 0;
 
 		while(canCreate == false) {
 
@@ -160,15 +161,28 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "醤油" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
 						}
 						if(myFlavors[i] == "ネギ" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=2;
@@ -184,15 +198,29 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "辛味調味料" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "肉" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=2;
@@ -208,15 +236,29 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "醤油" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "根菜" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //根菜を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=2;
@@ -232,15 +274,29 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "辛味調味料" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //辛味調味料を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "葉物野菜" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //葉物野菜を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=2;
@@ -256,15 +312,29 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "出汁" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "ネギ" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //ネギを削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=2;
@@ -279,24 +349,40 @@ public class DecideDishes extends DecideRoles{
 			//具材3つ
 
 			if(dishNumber == 9) { //味噌汁
-				if(FlavorX % 7163 != 0 || FlavorX % 7657 != 0) {
+				if(FlavorX % 7163 != 0 && FlavorX % 7657 != 0) {
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "味噌" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "出汁" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
 						}
 						if((myFlavors[i] == "ネギ" || myFlavors[i] == "葉物野菜") && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=3;
@@ -308,24 +394,40 @@ public class DecideDishes extends DecideRoles{
 				}
 			}
 			if(dishNumber == 10) { //鍋
-				if(FlavorX % 12673 != 0 || FlavorX % 13547 != 0 || FlavorX % 16169 != 0) {
+				if(FlavorX % 12673 != 0 && FlavorX % 13547 != 0 && FlavorX % 16169 != 0) {
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "出汁" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "肉" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
 						}
 						if((myFlavors[i] == "ネギ" || myFlavors[i] == "根菜" || myFlavors[i] == "葉物野菜") && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=3;
@@ -341,24 +443,37 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "味噌" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-<<<<<<< HEAD
-							numberOfCards -= 3;
-=======
->>>>>>> 6f30a21c1598c104b9baece3b90818147bab502d
+							reCount++;
+							 
+
 						}
 						if(myFlavors[i] == "出汁" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "根菜" && z == false) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //根菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから三番目の調理カードと入れ替え
 							z = true;
+							reCount++;
+							 
+						}
+					}
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
 						}
 					}
 					numberOfCards-=3;
@@ -373,32 +488,45 @@ public class DecideDishes extends DecideRoles{
 			//具材4つ
 
 			if(dishNumber == 12) { //大盛り鍋
-				if(FlavorX % 207727 != 0 || FlavorX % 222053 != 0 || FlavorX % 265031 != 0
-						||FlavorX % 237367 != 0 || FlavorX % 283309 != 0 || FlavorX % 338143 != 0) {
+				if(FlavorX % 207727 != 0 && FlavorX % 222053 != 0 && FlavorX % 265031 != 0
+						&& FlavorX % 237367 != 0 && FlavorX % 283309 != 0 && FlavorX % 338143 != 0) {
 					System.out.println("この料理は作れません"); //やり直し
 				}else {
 					for (int i = 0; i < numberOfCards; i++) {
+						if(reCount == 1) {
+							i--;
+							reCount = 0;
+						}
 						if(myFlavors[i] == "出汁" && x == false) {
 							myFlavors[i] = myFlavors[numberOfCards-1]; //出汁を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							reCount++;
+							 
 						}
 						if(myFlavors[i] == "肉" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //肉を削除
-							myFlavors[numberOfCards-2] = null; //後ろから二番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから二番目の調理カードと入れ替え
 							y = true;
+							reCount++;
+							 
 						}
 						if((myFlavors[i] == "ネギ" || myFlavors[i] == "根菜" || myFlavors[i] == "葉物野菜") && alpha < 2) {
 							myFlavors[i] = myFlavors[numberOfCards-3]; //なんでも野菜を削除
-							myFlavors[numberOfCards-3] = null; //後ろから三、四番目の調理カードと入れ替え
+							myFlavors[numberOfCards-1] = null; //後ろから三、四番目の調理カードと入れ替え
 							alpha++;
+							reCount++;
+							 
 						}
 					}
-<<<<<<< HEAD
-=======
+					for (int i = 0; i < numberOfCards; i++) {
+						if(myFlavors[i] == null) {
+							myFlavors[i] = myFlavors[i+1];
+							myFlavors[i+1] = null;
+						}
+					}
 					numberOfCards-=4;
 					myDish = "大盛り鍋";
->>>>>>> 6f30a21c1598c104b9baece3b90818147bab502d
 					System.out.println("大盛り鍋を作って勝負します");
 					nextGauge = 5;
 					canCreate = true;
@@ -415,7 +543,7 @@ public class DecideDishes extends DecideRoles{
 				canCreate = true;
 				break;
 			}
-
+			System.out.println(FlavorX);
 		}	
 
 		System.out.println();
