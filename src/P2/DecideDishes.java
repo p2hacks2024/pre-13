@@ -16,7 +16,12 @@ public class DecideDishes extends DecideRoles{
 	public static String getDishNumber() {
 		return myDish;
 	}
-	
+	public static void setDishNumber(int i) {
+		dishNumber = i;
+	}
+	public static int getNextGauge() {
+		return nextGauge;
+	}
 	public static void selectDishes() { //料理ごとに数値を設定
 
 		canCreate = false;
@@ -26,55 +31,55 @@ public class DecideDishes extends DecideRoles{
 		z = false;
 		alpha = 0;
 
-		while(canCreate == false) {
+//		while(canCreate == false) {
 
 			System.out.println("どの料理を作りますか？ <料理名を入力>");
 			System.out.println("作らない場合は <作らない>と入力");
-			Scanner selectDish = new Scanner(System.in);
-			String dish = selectDish.next();
+//			Scanner selectDish = new Scanner(System.in);
+//			String dish = selectDish.next();
 
-			if(dish.equals("冷奴")) {
-				dishNumber = 0;
-			}
-			if(dish.equals("豆腐の味噌漬け")) {
-				dishNumber = 1;
-			}
-			if(dish.equals("豆腐ハンバーグ")) {
-				dishNumber = 2;
-			}
-			if(dish.equals("焼き豆腐")) {
-				dishNumber = 3;
-			}
-			if(dish.equals("ネギ乗せ冷奴")) {
-				dishNumber = 4;
-			}
-			if(dish.equals("麻婆豆腐")) {
-				dishNumber = 5;
-			}
-			if(dish.equals("豆腐の煮物")) {
-				dishNumber = 6;
-			}
-			if(dish.equals("辛味豆腐サラダ")) {
-				dishNumber = 7;
-			}
-			if(dish.equals("出汁ジュレ冷奴")) {
-				dishNumber = 8;
-			}
-			if(dish.equals("味噌汁")) {
-				dishNumber = 9;
-			}
-			if(dish.equals("鍋")) {
-				dishNumber = 10;
-			}
-			if(dish.equals("味噌煮込み豆腐")) {
-				dishNumber = 11;
-			}
-			if(dish.equals("大盛り鍋")) {
-				dishNumber = 12;
-			}
-			if(dish.equals("作らない")) {
-				dishNumber = 100;
-			}
+//			if(dish.equals("冷奴")) {
+//				dishNumber = 0;
+//			}
+//			if(dish.equals("豆腐の味噌漬け")) {
+//				dishNumber = 1;
+//			}
+//			if(dish.equals("豆腐ハンバーグ")) {
+//				dishNumber = 2;
+//			}
+//			if(dish.equals("焼き豆腐")) {
+//				dishNumber = 3;
+//			}
+//			if(dish.equals("ネギ乗せ冷奴")) {
+//				dishNumber = 4;
+//			}
+//			if(dish.equals("麻婆豆腐")) {
+//				dishNumber = 5;
+//			}
+//			if(dish.equals("豆腐の煮物")) {
+//				dishNumber = 6;
+//			}
+//			if(dish.equals("辛味豆腐サラダ")) {
+//				dishNumber = 7;
+//			}
+//			if(dish.equals("出汁ジュレ冷奴")) {
+//				dishNumber = 8;
+//			}
+//			if(dish.equals("味噌汁")) {
+//				dishNumber = 9;
+//			}
+//			if(dish.equals("鍋")) {
+//				dishNumber = 10;
+//			}
+//			if(dish.equals("味噌煮込み豆腐")) {
+//				dishNumber = 11;
+//			}
+//			if(dish.equals("大盛り鍋")) {
+//				dishNumber = 12;
+//			}
+//			if(dish.equals("作らない")) {
+//				dishNumber = 100;
+//			}
 
 			if(dishNumber == 0) { //冷奴
 				if(FlavorX % 11 != 0) {
@@ -85,6 +90,7 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //醤油を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							System.out.println("aaa");
 						}
 					}
 					numberOfCards--;
@@ -92,7 +98,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("冷奴を作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 1) { //豆腐の味噌漬け
@@ -104,6 +110,7 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							System.out.println("aaa");
 						}
 					}
 					numberOfCards--;
@@ -111,7 +118,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("豆腐の味噌漬けを作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 2) { //豆腐ハンバーグ
@@ -123,6 +130,7 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //肉を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							System.out.println("aaa");
 						}
 					}
 					numberOfCards--;
@@ -130,7 +138,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("豆腐ハンバーグを作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 3) { //焼き豆腐
@@ -142,6 +150,7 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //ネギを削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
+							System.out.println("aaa");
 						}
 					}
 					numberOfCards--;
@@ -149,7 +158,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("焼き豆腐を作って勝負します");
 					nextGauge = 2;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 
@@ -176,7 +185,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("ネギ乗せ冷奴を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 5) { //麻婆豆腐
@@ -200,7 +209,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("麻婆豆腐を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 6) { //豆腐の煮物
@@ -224,7 +233,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("豆腐の煮物を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 7) { //辛味豆腐サラダ
@@ -248,7 +257,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("辛味豆腐サラダを作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 8) { //出汁ジュレ冷奴
@@ -272,7 +281,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("出汁ジュレ冷奴を作って勝負します");
 					nextGauge = 3;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 
@@ -304,7 +313,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("味噌汁を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 10) { //鍋
@@ -333,7 +342,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("鍋を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 			if(dishNumber == 11) { //味噌煮込み豆腐
@@ -362,7 +371,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("味噌煮込み豆腐を作って勝負します");
 					nextGauge = 4;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 
@@ -395,7 +404,7 @@ public class DecideDishes extends DecideRoles{
 					System.out.println("大盛り鍋を作って勝負します");
 					nextGauge = 5;
 					canCreate = true;
-					break;
+//					break;
 				}
 			}
 
@@ -406,10 +415,10 @@ public class DecideDishes extends DecideRoles{
 				System.out.println("料理を作らず勝負します");
 				nextGauge = 1;
 				canCreate = true;
-				break;
+//				break;
 			}
 
-		}	
+//		}	
 
 		System.out.println();
 	}

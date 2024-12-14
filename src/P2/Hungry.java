@@ -19,17 +19,17 @@ public class Hungry {
 	}
 	
 	public static void increaseHungry() {
-		if(initHungry == false) {
-			myHungryGauge = new String[50];
-			CPUHungryGauge = new String[50];
-			//myCurrentGauge = 0;
-			//CPUCurrentGauge = 0;
-			for(int i = 0; i < 50; i++) {
-				myHungryGauge[i] = "□";
-				CPUHungryGauge[i] = "□";
-			}
-			initHungry = true;
-		}
+//		if(initHungry == false) {
+//			myHungryGauge = new String[50];
+//			CPUHungryGauge = new String[50];
+//			//myCurrentGauge = 0;
+//			//CPUCurrentGauge = 0;
+//			for(int i = 0; i < 50; i++) {
+//				myHungryGauge[i] = "□";
+//				CPUHungryGauge[i] = "□";
+//			}
+//			initHungry = true;
+//		}
 
 		System.out.print("自分の満腹ゲージ：");
 		for(int i = 0; i < 50; i++) {
@@ -48,6 +48,16 @@ public class Hungry {
 		myCurrentGauge=0;
 		CPUCurrentGauge=0;
 		initHungry = false;
+	}
+	public static void setupHungryGauge() {
+		myHungryGauge = new String[50];
+		CPUHungryGauge = new String[50];
+		//myCurrentGauge = 0;
+		//CPUCurrentGauge = 0;
+		for(int i = 0; i < 50; i++) {
+			myHungryGauge[i] = "□";
+			CPUHungryGauge[i] = "□";
+		}
 	}
 
 }
