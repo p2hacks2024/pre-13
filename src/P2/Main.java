@@ -11,7 +11,9 @@ public class Main{
 		boolean Playerturn = false;
 		boolean CPUturn = false;
 		int gameRestart = 0,gameFlow = 0;
+		String[] seed = {""};
 		//start
+		setup();
 		new Display();
 		while(true) {
 			//			if(gameRestart == 0) {
@@ -22,8 +24,8 @@ public class Main{
 			//			System.out.println();
 			if(Display.getVsPanelVisible() == true) {
 				//				if(gameFlow == 1) {
-				CookingFlavor.startDrawElseCards(args); //プレイヤーが最初に引く調味料2枚
-				CPU.startCpuDrawElseCards(args); //CPUが最初に引く調味料2枚
+				
+				CPU.startCpuDrawElseCards(seed); //CPUが最初に引く調味料2枚
 
 				//--------------------------------------
 				// 対戦開始
@@ -36,15 +38,15 @@ public class Main{
 
 				while(true){
 					//					if(Playerturn == false&&CPUturn == false) {
-					Tohu.drawTohuCards(args); //プレイヤーが豆腐を引く
-					CookingFlavor.drawElseCards(args); //プレイヤーが調味料を２枚引く
+					Tohu.drawTohuCards(seed); //プレイヤーが豆腐を引く
+					CookingFlavor.drawElseCards(); //プレイヤーが調味料を２枚引く
 					System.out.println(); 
 
 					////両プレイヤーの空腹ゲージ
 					//System.out.println();
 
-					CPU.cpuDrawTohuCards(args); //CPUが豆腐を引く
-					CPU.cpuDrawElseCards(args); //CPUが調味料を２枚引く
+					CPU.cpuDrawTohuCards(seed); //CPUが豆腐を引く
+					CPU.cpuDrawElseCards(seed); //CPUが調味料を２枚引く
 					Playerturn = true;
 					//					}
 
@@ -109,5 +111,14 @@ public class Main{
 			//				break;
 			//			}
 		}
+	}
+	
+	public static void setup() {
+		CookingFlavor.startDrawElseCards(); //プレイヤーが最初に引く調味料2枚
+		Tohu.setupTohuCards();
+		Hungry.setupHungryGauge();
+	}
+	public static void turnend() {
+//		Display.vsSetup();
 	}
 }
