@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 public class Display extends JFrame implements ActionListener {
 	boolean startFrag=false;
 	boolean vsFrag = false;
+	boolean tofuChengeFlag = true;
 	int fheight,fwidth;
 	int currentSlideIndex = 1; // 現在のスライドインデックス
 	JButton sButton,ryoriButton,ryoriCancelButton;
@@ -43,11 +44,22 @@ public class Display extends JFrame implements ActionListener {
 	JLabel enGuzaiLabel[] = new JLabel[100];
 	JLabel ryoriLabel[] = new JLabel[13];
 	JLabel refrigerator[] = new JLabel[2];
-	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,backgroundLabel,recipeBLabel,chefaseLabel,syobuLabel;
-	JPanel titlePanel, buttonPanel,slidePanel,vsPanel,scenePanel,myTofuPanel,enTofuPanel,myGuzaiPanel,enGuzaiPanel,recipePanel,recipeBPanel,ryoriPanel,backryoriPanel,eatryoriPanel;
+	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,backgroundLabel,recipeBLabel,chefaseLabel,syobuLabel,chefeatLabel,chefeatryoriLabel;
+	JPanel titlePanel, buttonPanel,slidePanel;
+	static JPanel vsPanel;
+	JPanel scenePanel;
+	JPanel myTofuPanel;
+	JPanel enTofuPanel;
+	JPanel myGuzaiPanel;
+	JPanel enGuzaiPanel;
+	JPanel recipePanel;
+	JPanel recipeBPanel;
+	JPanel ryoriPanel;
+	JPanel backryoriPanel;
+	JPanel eatryoriPanel;
 	FlowLayout layout1, layout2;
 	ImageIcon title,chef,chefase,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen,tamago,gaming,background,
-	soysauce,miso,negi,niku,dasi,karami,hamono,konsai,recipeB,myGage,enGage,syobuB;
+	soysauce,miso,negi,niku,dasi,karami,hamono,konsai,recipeB,myGage,enGage,syobuB,eatChef;
 	ImageIcon slide[] = new ImageIcon[9];
 	ImageIcon recipe[] = new ImageIcon[7];
 	ImageIcon ryori[] = new ImageIcon[13];
@@ -73,6 +85,7 @@ public class Display extends JFrame implements ActionListener {
 
 		chef = new ImageIcon(getClass().getResource("/chef.png")); // 画像の読み込み（リソースパス）
 		chefase = new ImageIcon(getClass().getResource("/chefase.png")); // 画像の読み込み（リソースパス）
+		eatChef= new ImageIcon(getClass().getResource("/chefeat.png")); // 画像の読み込み（リソースパス）
 		cRefrigerator = new ImageIcon(getClass().getResource("/cRefrigerator.png")); // 画像の読み込み（リソースパス）
 		oRefrigerator = new ImageIcon(getClass().getResource("/oRefrigerator.png")); // 画像の読み込み（リソースパス）
 		table = new ImageIcon(getClass().getResource("/table.png")); // 画像の読み込み（リソースパス）
@@ -110,7 +123,9 @@ public class Display extends JFrame implements ActionListener {
 		enTofuPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));//x,y、
 		myGuzaiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
 		enGuzaiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,0,0));
+		eatryoriPanel = new JPanel();
 		vsPanel.setLayout(null);
+		eatryoriPanel.setLayout(null);
 		// タイトルラベルを追加
 		titleLabel = new JLabel(heightResizeImage(title,fheight/3));
 		titlePanel.add(titleLabel);
@@ -134,9 +149,10 @@ public class Display extends JFrame implements ActionListener {
 		backryoriPanel.setBackground(new Color(255, 255, 255, 127)); // 白色で50%透明
 		slidePanel.setVisible(false);
 		recipePanel.setVisible(false);
-		vsPanel.setVisible(true);
-		titlePanel.setVisible(false);
-		buttonPanel.setVisible(false);
+
+		vsPanel.setVisible(false);
+		titlePanel.setVisible(true);
+		buttonPanel.setVisible(true);
 		ryoriPanel.setVisible(false);
 		backryoriPanel.setVisible(false);
 		ryoriPanel.setOpaque(false); // 背景を透明にする
@@ -157,6 +173,8 @@ public class Display extends JFrame implements ActionListener {
 		myGageLabel = new JLabel(heightResizeImage(myGage,9*fheight/10));
 		enGageLabel = new JLabel(heightResizeImage(enGage,8*fheight/10));
 		backgroundLabel = new JLabel(heightResizeImage(background,fheight));
+		chefeatLabel = new JLabel(heightResizeImage(eatChef,fheight+100));
+		chefeatryoriLabel = new JLabel();
 		//		soysauceLabel = new JLabel(heightResizeImage(soysauce,150));
 		//		misoLabel = new JLabel(heightResizeImage(miso,150));
 		//		negiLabel = new JLabel(heightResizeImage(negi,150));
@@ -169,6 +187,9 @@ public class Display extends JFrame implements ActionListener {
 		enTofuPanel.setBounds(250,250,500,100);
 		myGuzaiPanel.setBounds(820,450,470,300);
 		enGuzaiPanel.setBounds(770,250,300,300);
+		eatryoriPanel.setBounds(0,0,fwidth,fheight);
+		chefeatLabel.setBounds(400,0,fwidth,fheight);
+
 		vsPanel.setBounds(0, 0, 1920, 1080); // x, y, 幅, 高さ
 		recipeBLabel.setBounds(0,0,100,100);
 		chefLabel.setBounds(-150, -900, chef.getIconWidth(), chef.getIconHeight()); // x, y, 幅, 高さ
@@ -181,8 +202,8 @@ public class Display extends JFrame implements ActionListener {
 		myBackGageLabel.setBounds(-670,-800,backGage.getIconWidth(),backGage.getIconHeight());
 		enBackGageLabel.setBounds(-550,-1100,backGage.getIconWidth(),backGage.getIconHeight());
 		//関数つける
-//		myGageLabel.setBounds(-670,-800,0,0);
-//		enGageLabel.setBounds(-550,-1100,0,0);
+		//		myGageLabel.setBounds(-670,-800,0,0);
+		//		enGageLabel.setBounds(-550,-1100,0,0);
 		//ここまで
 		backgroundLabel.setBounds(0, 0, fwidth, fheight);
 		//		enGageLabel = new JLabel(eGage);
@@ -193,9 +214,12 @@ public class Display extends JFrame implements ActionListener {
 		ryoriCancelButton.setPreferredSize(new Dimension(200, 150)); // ボタンサイズを指定
 		ryoriCancelButton.addActionListener(this);
 		ryoriCancelButton.setBounds(100,100,100,100);
-	
+		eatryoriPanel.add(chefeatLabel);
+
 		vsPanel.add(ryoriCancelButton);
+		vsPanel.add(eatryoriPanel);
 		ryoriCancelButton.setVisible(false);
+		eatryoriPanel.setVisible(false);
 		vsPanel.add(ryoriPanel);
 		vsPanel.add(backryoriPanel);
 		vsPanel.add(recipePanel);
@@ -204,36 +228,65 @@ public class Display extends JFrame implements ActionListener {
 		vsPanel.add(myGuzaiPanel);
 		vsPanel.add(enGuzaiPanel);
 		//食材配り
-		for (int i = 0;i<5;i++) {
-			myTofuLabel[i] = randomTofu(150);
-			myTofuPanel.add(myTofuLabel[i]);
-			int index = i; // ローカル変数でインデックスをキャプチャ
-			myTofuLabel[i].addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					//TradeCards TofuTrade = new TradeCards();
-					TradeCards.TradeCard(index);	
-					manpukuGauge(Hungry.myCurrentGauge,Hungry.CPUCurrentGauge);
-					myTofuLabel[index].setIcon(randomTofu(150).getIcon());
-					myTofuPanel.add(myTofuLabel[index]);
-					System.out.println(index);
-				}
-			});
-			enTofuLabel[i]= randomTofu(100);
-			enTofuPanel.add(enTofuLabel[i]);
-		}
-		for (int i = 0;i<8;i++) {
-			myGuzaiLabel[i] = randomGuzai(100);
-			myGuzaiPanel.add(myGuzaiLabel[i]);
-			int index = i; // ローカル変数でインデックスをキャプチャ
-			myGuzaiLabel[i].addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					System.out.println("aaa");
-				}
-			});
-			enGuzaiLabel[i] = randomGuzai(70);
-			enGuzaiPanel.add(enGuzaiLabel[i]);
+		//		if (Hungry.getMyCurrentGauge()>48) {
+		//			tofuChengeFlag= false;
+		//		}
+		if(vsPanel.isVisible()==true) {
+			for (int i = 0;i<5;i++) {
+				myTofuLabel[i] = randomTofu(i,150);
+				myTofuPanel.add(myTofuLabel[i]);
+				System.out.println(myTofuLabel[i].toString());
+				int index = i; // ローカル変数でインデックスをキャプチャ
+
+				myTofuLabel[i].addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TradeCards TofuTrade = new TradeCards();
+						if(tofuChengeFlag== true) {
+							TradeCards.TradeCard(index);	
+							manpukuGauge(Hungry.getMyCurrentGauge(),Hungry.getCpuCurrentGauge());
+							System.out.println(Hungry.getMyCurrentGauge());
+							myTofuLabel[index].setIcon(randomTofu(index,150).getIcon());
+							myTofuPanel.add(myTofuLabel[index]);
+							System.out.println(index);
+						}
+					}
+				});
+				enTofuLabel[i]= randomTofu(i,100);
+				enTofuPanel.add(enTofuLabel[i]);
+
+			}
+			for (int i = 0;i<4;i++) {
+				myGuzaiLabel[i] = randomGuzai(i,100);
+				myGuzaiPanel.add(myGuzaiLabel[i]);
+				//			int index = i; // ローカル変数でインデックスをキャプチャ
+				//			myGuzaiLabel[i].addMouseListener(new MouseAdapter() {
+				//				@Override
+				//				public void mouseClicked(MouseEvent e) {
+				//					System.out.println("aaa");
+				//				}
+				//			});
+				enGuzaiLabel[i] = randomGuzai(i,70);
+				enGuzaiPanel.add(enGuzaiLabel[i]);
+			}
+			for(int i = 0;i<13;i++) {
+				int index = i; // ローカル変数でインデックスをキャプチャ
+				ryoriLabel[i].addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						//TradeCards TofuTrade = new TradeCards();	
+						//				chefeatryoriLabel = new JLabel(heightResizeImage((ImageIcon) ryoriLabel[index].getIcon(),400));
+
+						chefeatryoriLabel.setIcon(heightResizeImage((ImageIcon) ryoriLabel[index].getIcon(),400));
+						chefeatryoriLabel.setBounds(100,200,500,500);
+						eatryoriPanel.add(chefeatryoriLabel);
+						DecideDishes.setDishNumber(index);
+						DecideDishes.selectDishes();
+						ryoriCancelButton.setVisible(false);
+						eatryoriPanel.setVisible(true);
+					}
+				});
+			}
 		}
 		ryoriButton = new JButton("決定");
 		ryoriButton.setPreferredSize(new Dimension(200, 150)); // ボタンサイズを指定
@@ -279,7 +332,7 @@ public class Display extends JFrame implements ActionListener {
 		sButton.setPreferredSize(new Dimension(200, 150)); // ボタンサイズを指定
 		sButton.addActionListener(this);
 		buttonPanel.add(sButton);
-	
+
 
 
 		//すべてのパネルをレイアウトに追加
@@ -355,6 +408,16 @@ public class Display extends JFrame implements ActionListener {
 				recipeLabel[1].setVisible(true);
 			}
 		});
+		eatryoriPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// クリックされたときの動作
+				ryoriPanel.setVisible(false);
+				eatryoriPanel.setVisible(false);
+				backryoriPanel.setVisible(false);
+				ryoriButton.setVisible(true);
+			}
+		});
 		//		vsPanel.addMouseListener(new MouseAdapter() {
 		//			public void mouseClicked(MouseEvent e) {
 		//				
@@ -380,8 +443,8 @@ public class Display extends JFrame implements ActionListener {
 		if (e.getSource() == ryoriCancelButton) {
 			ryoriPanel.setVisible(false);
 			backryoriPanel.setVisible(false);
-			ryoriButton.setVisible(true);
 			ryoriCancelButton.setVisible(false);
+			ryoriButton.setVisible(true);
 		}
 		if(vsFrag == true) {}
 	}
@@ -405,48 +468,53 @@ public class Display extends JFrame implements ActionListener {
 		ImageIcon resizedIcon = new ImageIcon(resizedImage);
 		return resizedIcon;
 	}
-	public JLabel randomTofu(int size) {
+	public JLabel randomTofu(int n,int size) {
 		JLabel rndtofu = new JLabel();
-		Random random = new Random();
-		int randomInt = random.nextInt(4);
-		if(randomInt== 0) {
+		//		Random random = new Random();
+		//		int randomInt = random.nextInt(4);
+		if(Tohu.getMyCards(n).equals("絹ごし豆腐")) {
 			rndtofu = new JLabel(heightResizeImage(kinu,size));
-		}else if(randomInt== 1) {
+		}else if(Tohu.getMyCards(n).equals("木綿豆腐")) {
 			rndtofu = new JLabel(heightResizeImage(momen,size));
-		}else if(randomInt == 2) {
+		}else if(Tohu.getMyCards(n).equals("ゲーミング豆腐")) {
 			rndtofu = new JLabel(heightResizeImage(gaming,size));
-		}else if(randomInt == 3) {
+		}else if(Tohu.getMyCards(n).equals("卵豆腐")) {
 			rndtofu = new JLabel(heightResizeImage(tamago,size));
 		}
 		return rndtofu;
 	}
-	public JLabel randomGuzai(int size) {
+	public JLabel randomGuzai(int n,int size) {
 		JLabel rndguzai = new JLabel();
-		Random random = new Random();
-		int randomInt = random.nextInt(8);
-		if(randomInt== 0) {
+		//		Random random = new Random();
+		//		int randomInt = random.nextInt(8);
+		if(CookingFlavor.getMyFlavor(n).equals("醤油")) {
 			rndguzai = new JLabel(heightResizeImage(soysauce,size));
-		}else if(randomInt== 1) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("味噌")) {
 			rndguzai = new JLabel(heightResizeImage(miso,size));
-		}else if(randomInt == 2) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("ネギ")) {
 			rndguzai = new JLabel(heightResizeImage(negi,size));
-		}else if(randomInt == 3) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("肉")) {
 			rndguzai = new JLabel(heightResizeImage(niku,size));
-		}else if(randomInt== 4) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("出汁")) {
 			rndguzai = new JLabel(heightResizeImage(dasi,size));
-		}else if(randomInt== 5) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("辛味調味料")) {
 			rndguzai = new JLabel(heightResizeImage(karami,size));
-		}else if(randomInt ==6) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("葉物野菜")) {
 			rndguzai = new JLabel(heightResizeImage(hamono,size));
-		}else if(randomInt == 7) {
+		}else if(CookingFlavor.getMyFlavor(n).equals("根菜")) {
 			rndguzai = new JLabel(heightResizeImage(konsai,size));
 		}
 		return rndguzai;
 	}
 	public void manpukuGauge(int x,int y){
-		myGageLabel.setBounds(-670,-800,backGage.getIconWidth(),x*backGage.getIconHeight()/50);
-		enGageLabel.setBounds(-550,-1100,backGage.getIconWidth(),y*backGage.getIconHeight()/50);
+		myGageLabel.setBounds(-670,660-(x*353/50),myGage.getIconWidth(),x*353/50);
+		enGageLabel.setBounds(-550,-1100,enGage.getIconWidth(),y*enGage.getIconHeight()/50);
+		myGageLabel.setVisible(true);
+		enGageLabel.setVisible(true);
 
+	}
+	public static boolean getVsPanelVisible() {
+		return vsPanel.isVisible();
 	}
 }
 //=======

@@ -8,17 +8,20 @@ import java.util.Scanner;
 public class Main{
 
 	public static void main(String[] args) {
+		boolean Playerturn = false;
+		boolean CPUturn = false;
 		int gameRestart = 0,gameFlow = 0;
 		//start
+		new Display();
 		while(true) {
-			if(gameRestart == 0) {
-			System.out.println("操作を入力してください : 1.ゲームを始める 2.ゲームを閉じる");
-			Scanner scanMain = new Scanner(System.in);
-			gameFlow = scanMain.nextInt();
-			}
-			System.out.println();
-      
-			if(gameFlow == 1) {
+			//			if(gameRestart == 0) {
+			//				System.out.println("操作を入力してください : 1.ゲームを始める 2.ゲームを閉じる");
+			//				Scanner scanMain = new Scanner(System.in);
+			//				gameFlow = scanMain.nextInt();
+			//			}
+			//			System.out.println();
+			if(Display.getVsPanelVisible() == true) {
+				//				if(gameFlow == 1) {
 				CookingFlavor.startDrawElseCards(args); //プレイヤーが最初に引く調味料2枚
 				CPU.startCpuDrawElseCards(args); //CPUが最初に引く調味料2枚
 
@@ -32,7 +35,7 @@ public class Main{
 				System.out.println();
 
 				while(true){
-					//new Display();
+					//					if(Playerturn == false&&CPUturn == false) {
 					Tohu.drawTohuCards(args); //プレイヤーが豆腐を引く
 					CookingFlavor.drawElseCards(args); //プレイヤーが調味料を２枚引く
 					System.out.println(); 
@@ -42,14 +45,17 @@ public class Main{
 
 					CPU.cpuDrawTohuCards(args); //CPUが豆腐を引く
 					CPU.cpuDrawElseCards(args); //CPUが調味料を２枚引く
-					System.out.println();
+					Playerturn = true;
+					//					}
 
+					System.out.println();
+					//					if(Playerturn == true) {
 					//--------------------------------------
 					// playerのターン
 					System.out.println("Playerのターンです\n");
 					//--------------------------------------
 
-//					TradeCards.TradeCard(); //プレイヤーがカードを交換する
+					//					TradeCards.TradeCard(); //プレイヤーがカードを交換する
 					DecideCards.convertNumber(); //食材に素数を与える
 					DecideCards.calculateTohu(); //持っている豆腐を判別
 					DecideCards.calculateFlavor(); //持っている調味料を判別
@@ -57,7 +63,9 @@ public class Main{
 					DecideDishes.selectDishes(); //勝負する料理の決定
 					//SelectFlavor.canCreateDish();
 					//dishNumberで色々処理できるはず
-
+					Playerturn =false;
+					CPUturn = true;
+					//					}
 					GameResult.attackDamage(false); //ダメージの計算
 					if(GameResult.finalResult() == 0) { //満腹かどうか判断
 						break;
@@ -65,7 +73,7 @@ public class Main{
 
 					//CookingFlavor.printMyFlavors();
 
-
+					//					if(CPUturn ==true) {
 					//-----------------------------------
 					// CPUのターン
 					System.out.println("CPUのターンです\n");
@@ -80,7 +88,7 @@ public class Main{
 
 					CpuDecideRole.cpuDecideRoleNumber(); //役判別
 					CpuDecideDishes.cpuSelectDishes(); //勝負する料理の決定
-
+					//					}
 					GameResult.attackDamage(true); //ダメージの計算
 					if(GameResult.finalResult() == 0) { //満腹かどうか判断
 						break;
@@ -96,9 +104,10 @@ public class Main{
 				}else if(gameEnd == 2){
 					gameRestart = 0;
 				}
-			}else if(gameFlow == 2) {
-				break;
 			}
+			//			}else if(gameFlow == 2) {
+			//				break;
+			//			}
 		}
 	}
 }
