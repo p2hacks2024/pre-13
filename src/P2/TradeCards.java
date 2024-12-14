@@ -10,27 +10,28 @@ public class TradeCards extends Tohu{
 	static boolean moreCard = false;
 	static boolean tradeOne = false;
 
-	public static void TradeCard(){
+	public static void TradeCard(int tradeNumber){
 
 		moreCard = false;
 		tradeOne = false;
 
 		System.out.println("カードを交換しますか？ yes/no");
-		Scanner tradeScan = new Scanner(System.in);
-		String trade = tradeScan.next();
+	//	Scanner tradeScan = new Scanner(System.in);
+		//String trade = tradeScan.next();
 
-		while(moreCard == false){
-			if(trade.equals("no")) {
-				break;
-			}else {				
+		//while(moreCard == false){
+	//		if(trade.equals("no")) {
+		//		break;
+		//	}else {				
 
 				//カードを指定して交換ボタンを押す(今回は仮で入力する)
 
 				System.out.println("1~5で変えたいカードの番号をどうぞ");
-				Scanner scan = new Scanner(System.in);
-				int tradeNumber = scan.nextInt();
+	//			Scanner scan = new Scanner(System.in);
+		//		int tradeNumber = scan.nextInt();
 				System.out.println(tradeNumber + "番目ですね？");
 				System.out.println("交換します\n");
+
 
 				myCards[tradeNumber-1] = cards[r.nextInt(4)];
 
@@ -69,23 +70,23 @@ public class TradeCards extends Tohu{
 				//この時点で満腹度が上限-1なら交換できないようにする
 
 				System.out.println("カードを交換しますか？ yes/no");
-				Scanner moreScan = new Scanner(System.in);
-				String more = moreScan.next();
-				if(more.equals("no")) {
-					break;
-				}
+		//		Scanner moreScan = new Scanner(System.in);
+		//		String more = moreScan.next();
+		//		if(more.equals("no")) {
+		//			break;
+		//		}
 
 
 			}
-		}
+		//}
 
-		System.out.println();
-		if(tradeOne == false) {
-			tradeOne = true;
-		}
-		if(tradeOne == true) {
-			tradeOne = false;
-		}
-	}
+//		System.out.println();
+//		if(tradeOne == false) {
+//			tradeOne = true;
+//		}
+//		if(tradeOne == true) {
+//			tradeOne = false;
+//		}
+//	}
 }
 
