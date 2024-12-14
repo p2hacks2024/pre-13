@@ -338,7 +338,7 @@ public class DecideDishes extends DecideRoles{
 							myFlavors[i] = myFlavors[numberOfCards-1]; //味噌を削除
 							myFlavors[numberOfCards-1] = null; //一番後ろの調理カードと入れ替え
 							x = true;
-							numberOfCards--;
+							numberOfCards -= 3;
 						}
 						if(myFlavors[i] == "出汁" && y == false) {
 							myFlavors[i] = myFlavors[numberOfCards-2]; //出汁を削除
@@ -385,7 +385,7 @@ public class DecideDishes extends DecideRoles{
 							numberOfCards--;
 						}
 					}
-					System.out.println("大盛り鍋奴を作って勝負します");
+					System.out.println("大盛り鍋を作って勝負します");
 					nextGauge = 5;
 					canCreate = true;
 					break;
