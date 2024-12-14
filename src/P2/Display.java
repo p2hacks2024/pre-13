@@ -37,7 +37,7 @@ public class Display extends JFrame implements ActionListener {
 	int currentSlideIndex = 1; // 現在のスライドインデックス
 	JButton sButton,ryoriButton,ryoriCancelButton;
 	JLabel titleLabel;
-	JLabel slideLabel[]=new JLabel[9] ;
+	JLabel slideLabel[]=new JLabel[10] ;
 	JLabel recipeLabel[] = new JLabel[7];
 	JLabel myTofuLabel[] = new JLabel[5];
 	JLabel enTofuLabel[] = new JLabel[5];
@@ -60,10 +60,13 @@ public class Display extends JFrame implements ActionListener {
 	JPanel eatryoriPanel;
 	JPanel ikasamaPanel;
 	JPanel resultPanel;
+	JPanel winPanel;
+	JPanel losePanel;
+	JPanel onokosiPanel;
 	FlowLayout layout1, layout2;
 	ImageIcon title,chef,chefase,table,cRefrigerator,oRefrigerator,myGageFrame,enGageFrame,backGage,kinu,momen,tamago,gaming,background,
 	soysauce,miso,negi,niku,dasi,karami,hamono,konsai,recipeB,myGage,enGage,syobuB,eatChef;
-	ImageIcon slide[] = new ImageIcon[9];
+	ImageIcon slide[] = new ImageIcon[10];
 	ImageIcon recipe[] = new ImageIcon[7];
 	ImageIcon ryori[] = new ImageIcon[14];
 	CardLayout scene;
@@ -79,7 +82,7 @@ public class Display extends JFrame implements ActionListener {
 		//        backPanel.setBackground(Color.BLACK);
 		// 画像の読み込み
 		title = new ImageIcon(getClass().getResource("/toufurash.png")); // 画像の読み込み（リソースパス）
-		for(int i=1;i<9;i++) {
+		for(int i=1;i<10;i++) {
 			slide[i] = new ImageIcon(getClass().getResource("/スライド"+i+".JPG"));
 		}
 		for(int i=1;i<7;i++) {
@@ -129,19 +132,22 @@ public class Display extends JFrame implements ActionListener {
 		eatryoriPanel = new JPanel();
 		ikasamaPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 300));
 		ikasamaLabel = new JLabel();
-		resultPanel = new JPanel();
+		resultPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 300));
+		winPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 300));
+		losePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 300));
+		onokosiPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 300));
 		winLabel =  new JLabel();
 		loseLabel =  new JLabel();
 		onokosiLabel = new JLabel();
 		vsPanel.setLayout(null);
 		eatryoriPanel.setLayout(null);
-		resultPanel.setLayout(null);
+		//		resultPanel.setLayout(null);
 		// タイトルラベルを追加
 		titleLabel = new JLabel(heightResizeImage(title,fheight/3));
 		titlePanel.add(titleLabel);
 		//説明スライドパネルを追加
 		recipeBLabel = new JLabel(heightResizeImage(recipeB,100));
-		for(int i = 8;i>0;i--) {
+		for(int i = 9;i>0;i--) {
 			slideLabel[i] = new JLabel(slide[i]);
 			slidePanel.add(slideLabel[i]);
 			slideLabel[i].setVisible(false);
@@ -168,11 +174,18 @@ public class Display extends JFrame implements ActionListener {
 		winLabel.setText("勝利");
 		loseLabel.setText("敗北");
 		onokosiLabel.setText("お残し");
-	
+//		winLabel.setVisible(false);
+//		loseLabel.setVisible(false);
 		ikasamaPanel.add(ikasamaLabel);
 		ikasamaLabel.setBounds(0,400,fwidth,fheight);
 		resultPanel.setBackground(new Color(255, 255, 255, 127)); // 白色で50%透明
+		winPanel.setBackground(new Color(255, 255, 255, 127)); // 白色で50%透明
+		losePanel.setBackground(new Color(255, 255, 255, 127)); // 白色で50%透明
+		onokosiPanel.setBackground(new Color(255, 255, 255, 127)); // 白色で50%透明
 		resultPanel.setVisible(false);
+		winPanel.setVisible(false);
+		losePanel.setVisible(false);
+		onokosiPanel.setVisible(false);
 		vsPanel.setVisible(false);
 		titlePanel.setVisible(true);
 		buttonPanel.setVisible(true);
@@ -207,6 +220,9 @@ public class Display extends JFrame implements ActionListener {
 		winLabel.setBounds(0,400,fwidth,fheight);
 		loseLabel.setBounds(0,400,fwidth,fheight);
 		onokosiLabel.setBounds(0,400,fwidth,fheight);
+		winPanel.setBounds(0,0,fwidth,fheight);
+		losePanel.setBounds(0,0,fwidth,fheight);
+		onokosiPanel.setBounds(0,0,fwidth,fheight);
 		resultPanel.setBounds(0,0,fwidth,fheight);
 		recipePanel.setBounds(0,0,fwidth,fheight);
 		ryoriPanel.setBounds(50,200,fwidth,500);
@@ -244,10 +260,13 @@ public class Display extends JFrame implements ActionListener {
 		ryoriCancelButton.addActionListener(this);
 		ryoriCancelButton.setBounds(100,100,100,100);
 		eatryoriPanel.add(chefeatLabel);
-		resultPanel.add(winLabel);
-		resultPanel.add(loseLabel);
-		resultPanel.add(onokosiLabel);
+		winPanel.add(winLabel);
+		losePanel.add(loseLabel);
+		onokosiPanel.add(onokosiLabel);
 		vsPanel.add(resultPanel);
+		vsPanel.add(winPanel);
+		vsPanel.add(losePanel);
+		vsPanel.add(onokosiPanel);
 		vsPanel.add(ikasamaPanel);
 		vsPanel.add(ryoriCancelButton);
 		vsPanel.add(eatryoriPanel);
@@ -342,7 +361,7 @@ public class Display extends JFrame implements ActionListener {
 					slideLabel[currentSlideIndex].setVisible(false); // 現在のスライドを非表示
 					currentSlideIndex++;
 					//System.out.println(currentSlideIndex);
-					if (currentSlideIndex > 8) {
+					if (currentSlideIndex > 9) {
 						currentSlideIndex = 1; // スライドを最初に戻す
 						slidePanel.setVisible(false); // スライドパネルを非表示
 
@@ -440,17 +459,20 @@ public class Display extends JFrame implements ActionListener {
 				ikasamaPanel.setVisible(true);
 			}
 		});
-		onokosiLabel.addMouseListener(new MouseAdapter() {
+		onokosiPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// クリックされたときの動作
+				onokosiPanel.setVisible(false);
+				System.out.println("ﾊﾝGｪ"+Hungry.getMyCurrentGauge());
 				if(Hungry.getMyCurrentGauge()>49) {
-					winLabel.setVisible(false);
-					loseLabel.setVisible(true);
+					
+					winPanel.setVisible(false);
+					losePanel.setVisible(true);
 				}
 				if(Hungry.getCpuCurrentGauge()>49) {
-					winLabel.setVisible(true);
-					loseLabel.setVisible(false);
+					winPanel.setVisible(true);
+					losePanel.setVisible(false);
 				}
 			}
 		});
@@ -569,9 +591,9 @@ public class Display extends JFrame implements ActionListener {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					if(Hungry.getMyCurrentGauge()>49||Hungry.getCpuCurrentGauge()>49) {
-						resultPanel.setVisible(true);
-						onokosiLabel.setVisible(true);
-//						System.out.println(Hungry.getMyCurrentGauge());
+//						resultPanel.setVisible(true);
+						onokosiPanel.setVisible(true);
+						//						System.out.println(Hungry.getMyCurrentGauge());
 						//			winLabel.setVisible(false);
 						//			loseLabel.setVisible(true);
 					}
