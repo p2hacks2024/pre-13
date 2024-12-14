@@ -9,6 +9,11 @@ public class CpuDecideDishes extends CpuDecideRole{
 	static boolean cpuy = false;
 	static boolean cpuz = false;
 	static int cpualpha = 0;
+	static String cpuDish;
+	
+	public static String getCpuDish() {
+		return cpuDish;
+	}
 
 	public static void cpuSelectDishes() { //料理ごとに数値を設定
 
@@ -43,6 +48,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 			}
 			cpuNumberOfCards-=4;
 			nextGauge = 5;
+			cpuDish = "大盛り鍋";
 			System.out.println("CPUは大盛り鍋を作った");
 		}else if(cpuFlavorX % 9139 == 0) { //味噌煮込み豆腐
 			for (int i = 0; i < cpuNumberOfCards; i++) {
@@ -63,6 +69,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=3;
+			cpuDish = "味噌煮込み豆腐";
 			System.out.println("CPUは味噌煮込み豆腐を作った");
 			nextGauge = 4;
 		}else if(cpuFlavorX % 12673 == 0 || cpuFlavorX % 13547 == 0 || cpuFlavorX % 16169 == 0) { //鍋
@@ -84,6 +91,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=3;
+			cpuDish = "鍋";
 			System.out.println("CPUは鍋を作った");
 			nextGauge = 4;
 		}else if(cpuFlavorX % 7163 == 0 || cpuFlavorX % 7657 == 0) { //味噌汁
@@ -105,6 +113,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=3;
+			cpuDish = "味噌汁";
 			System.out.println("CPUは味噌汁を作った");
 			nextGauge = 4;
 		}else if(cpuFlavorX % 551 == 0) { //出汁ジュレ冷奴
@@ -137,6 +146,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=2;
+			cpuDish = "辛味豆腐サラダ";
 			System.out.println("CPUは辛味豆腐サラダを作った");
 			nextGauge = 3;
 		}else if(cpuFlavorX % 407 == 0) { //豆腐の煮物
@@ -153,6 +163,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=2;
+			cpuDish = "豆腐の煮物";
 			System.out.println("CPUは豆腐の煮物を作った");
 			nextGauge = 3;
 		}else if(cpuFlavorX % 391 == 0) { //麻婆豆腐
@@ -169,6 +180,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=2;
+			cpuDish = "麻婆豆腐";
 			System.out.println("CPUは麻婆豆腐を作った");
 			nextGauge = 3;
 		}else if(cpuFlavorX % 319 == 0) { //ネギ乗せ冷奴
@@ -185,6 +197,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards-=2;
+			cpuDish = "ネギ乗せ冷奴";
 			System.out.println("CPUはネギ乗せ冷奴を作った");
 			nextGauge = 3;
 		}else if(cpuFlavorX % 29 == 0) { //焼き豆腐
@@ -196,6 +209,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards--;
+			cpuDish = "焼き豆腐";
 			System.out.println("CPUは焼き豆腐を作った");
 			nextGauge = 2;
 		}else if(cpuFlavorX % 23 == 0) { //豆腐ハンバーグ
@@ -207,6 +221,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards--;
+			cpuDish = "豆腐ハンバーグ";
 			System.out.println("CPUは豆腐ハンバーグを作った");
 			nextGauge = 2;
 		}else if(cpuFlavorX % 13 == 0) { //豆腐の味噌漬け
@@ -218,6 +233,7 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards--;
+			cpuDish = "豆腐の味噌漬け";
 			System.out.println("CPUは豆腐の味噌漬けを作った");
 			nextGauge = 2;
 		}else if(cpuFlavorX % 11 == 0) { //冷奴
@@ -229,10 +245,12 @@ public class CpuDecideDishes extends CpuDecideRole{
 				}
 			}
 			cpuNumberOfCards--;
+			cpuDish = "冷奴";
 			System.out.println("CPUは冷奴を作った");
 			nextGauge = 2;
 		}else { //作らない
 			nextGauge = 1;
+			cpuDish = "なし";
 			System.out.println("CPUは何も作らなかった");
 		}
 		CPU.getCpuCards();
