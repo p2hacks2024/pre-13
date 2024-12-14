@@ -17,6 +17,12 @@ public class Hungry {
 	public static int getCpuCurrentGauge() {
 		return CPUCurrentGauge;
 	}
+	public static void setMyCurrentGauge(int i) {
+		 myCurrentGauge = i +myCurrentGauge;
+	}
+	public static void setCpuCurrentGauge(int i) {
+		CPUCurrentGauge = i + CPUCurrentGauge;
+	}
 	
 	public static void increaseHungry() {
 //		if(initHungry == false) {

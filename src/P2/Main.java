@@ -38,7 +38,7 @@ public class Main{
 
 				while(true){
 					//					if(Playerturn == false&&CPUturn == false) {
-					Tohu.drawTohuCards(seed); //プレイヤーが豆腐を引く
+					Tohu.drawTohuCards(); //プレイヤーが豆腐を引く
 					CookingFlavor.drawElseCards(); //プレイヤーが調味料を２枚引く
 					System.out.println(); 
 

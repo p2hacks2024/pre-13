@@ -40,8 +40,8 @@ public class Display extends JFrame implements ActionListener {
 	JLabel recipeLabel[] = new JLabel[7];
 	JLabel myTofuLabel[] = new JLabel[5];
 	JLabel enTofuLabel[] = new JLabel[5];
-	JLabel myGuzaiLabel[] = new JLabel[100];
-	JLabel enGuzaiLabel[] = new JLabel[100];
+	JLabel myGuzaiLabel[] = new JLabel[8];
+	JLabel enGuzaiLabel[] = new JLabel[8];
 	JLabel ryoriLabel[] = new JLabel[14];
 	JLabel refrigerator[] = new JLabel[2];
 	JLabel chefLabel,myGageLabel,enGageLabel,tableLabel,myBackGageLabel,enBackGageLabel,myGageFrameLabel,enGageFrameLabel,backgroundLabel,recipeBLabel,chefaseLabel,syobuLabel,chefeatLabel,chefeatryoriLabel;
@@ -231,9 +231,9 @@ public class Display extends JFrame implements ActionListener {
 		//		if (Hungry.getMyCurrentGauge()>48) {
 		//			tofuChengeFlag= false;
 		//		}
-//		if(vsPanel.isVisible()==true) {
-//
-//		}
+		//		if(vsPanel.isVisible()==true) {
+		//
+		//		}
 		ryoriButton = new JButton("決定");
 		ryoriButton.setPreferredSize(new Dimension(200, 150)); // ボタンサイズを指定
 		ryoriButton.addActionListener(this);
@@ -364,11 +364,35 @@ public class Display extends JFrame implements ActionListener {
 				backryoriPanel.setVisible(false);
 				ryoriButton.setVisible(true);
 				CookingFlavor.drawElseCards();
-				myTofuPanel.revalidate();
-				myTofuPanel.repaint();
-				
-//				vsSetup();
-//Main.setup();
+				Tohu.setupTohuCards();
+				for(int i=0;i<5;i++) {
+					myTofuLabel[i].setIcon(randomTofu(i,150).getIcon());
+					myTofuLabel[i].revalidate();
+					myTofuLabel[i].repaint();
+					enTofuLabel[i].revalidate();
+					enTofuLabel[i].repaint();
+
+				}
+				for(int i=0;i<CookingFlavor.numberOfCards;i++)	{
+			
+					myGuzaiLabel[i] = randomGuzai(i,100);
+					myGuzaiPanel.add(myGuzaiLabel[i]);
+					
+					myGuzaiLabel[i].setIcon(randomGuzai(i,100).getIcon());
+					
+
+										if (myGuzaiLabel[i] == null) {
+										    System.out.println("myGuzaiLabel[" + i  + "] is null");
+										} else {
+										    System.out.println("myGuzaiLabel[" + i + "] is valid");
+										}
+
+//					myGuzaiLabel[i].revalidate();
+//					myGuzaiLabel[i].repaint();
+				}
+
+				//				vsSetup();
+				//Main.setup();
 			}
 		});
 		//		vsPanel.addMouseListener(new MouseAdapter() {
@@ -456,12 +480,14 @@ public class Display extends JFrame implements ActionListener {
 			rndguzai = new JLabel(heightResizeImage(hamono,size));
 		}else if(CookingFlavor.getMyFlavor(n).equals("根菜")) {
 			rndguzai = new JLabel(heightResizeImage(konsai,size));
+		}else if(CookingFlavor.getMyFlavor(n).equals(null)) {
+			rndguzai = new JLabel();
 		}
 		return rndguzai;
 	}
 	public void manpukuGauge(int x,int y){
 		myGageLabel.setBounds(-670,660-(x*353/50),myGage.getIconWidth(),x*353/50);
-		enGageLabel.setBounds(-550,-1100,enGage.getIconWidth(),enGage.getIconHeight());
+		enGageLabel.setBounds(-550,350-(y*353/50),enGage.getIconWidth(),y*353/50);
 		myGageLabel.setVisible(true);
 		enGageLabel.setVisible(true);
 
@@ -487,7 +513,7 @@ public class Display extends JFrame implements ActionListener {
 						myTofuLabel[index].setIcon(randomTofu(index,150).getIcon());
 						myTofuPanel.add(myTofuLabel[index]);
 						System.out.println(index);
-		
+
 					}
 				}
 			});
@@ -522,10 +548,11 @@ public class Display extends JFrame implements ActionListener {
 					DecideDishes.setDishNumber(index);
 					DecideDishes.calculateFlavor();
 					DecideDishes.selectDishes();
+
 					manpukuGauge(Hungry.getMyCurrentGauge(),Hungry.getCpuCurrentGauge()+DecideDishes.getNextGauge());
-//					Main.setup();
-//					vsSetup();
-					
+					//					Main.setup();
+					//					vsSetup();
+
 					ryoriCancelButton.setVisible(false);
 					eatryoriPanel.setVisible(true);
 					if(index == 13) {

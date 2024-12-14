@@ -16,7 +16,7 @@ public class Tohu extends CookingFlavor{
 		return myCards[a];
 	}
 
-	public static void drawTohuCards(String[] args) {
+	public static void drawTohuCards() {
 		System.out.println("Playerのカード");
 		for(int i=0 ; i<5 ; i++) {
 			String card = cards[r.nextInt(4)];
