@@ -33,7 +33,7 @@ public class TradeCards extends Tohu{
 				System.out.println("交換します\n");
 
 
-				myCards[tradeNumber-1] = cards[r.nextInt(4)];
+				myCards[tradeNumber] = cards[r.nextInt(4)];
 
 				System.out.println();
 				//ここで満腹度を増やす
